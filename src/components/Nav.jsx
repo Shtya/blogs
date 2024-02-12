@@ -25,6 +25,7 @@ const Nav = () => {
       }
     });
   },[])
+  
 
   const handleCate = ()=>{
     cat.classList.toggle("active")
