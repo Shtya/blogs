@@ -2,14 +2,14 @@ import React, { useEffect } from 'react'
 import Logo from "../assets/Logo.webp" ;
 
 const Nav = () => {
-  let nav = document.querySelector("nav")
-  let app = document.querySelector(".app")
-  let x = document.querySelector(".menu")
-  let cat = document.querySelector(".category")
-  let i = document.querySelector(".cat i")
 
   useEffect(_=>{
     window.addEventListener('resize', function() {
+      let nav = document.querySelector("nav")
+      let app = document.querySelector(".app")
+      let x = document.querySelector(".menu")
+      let cat = document.querySelector(".category")
+      let i = document.querySelector(".cat i")
       if (window.innerWidth <= 850) {
         nav.style.left = "-300px"
         app.style.paddingLeft = "0" ;
@@ -25,15 +25,21 @@ const Nav = () => {
       }
     });
   },[])
-  
+
 
   const handleCate = ()=>{
+    let cat = document.querySelector(".category")
+    let i = document.querySelector(".cat i")
     cat.classList.toggle("active")
     i.classList.toggle("rotate")
 
   }
 
   const handleX = ()=>{
+    let nav = document.querySelector("nav")
+    let app = document.querySelector(".app")
+    let x = document.querySelector(".menu")
+    let cat = document.querySelector(".category")
     
     if(x.classList.contains("fa-xmark")){
       nav.style.left = "-300px"
