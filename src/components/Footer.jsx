@@ -14,16 +14,16 @@ const Footer = () => {
       </ul>
       <ul className='ul-1' >
           <li > Contact Info </li>
-          <li ><i className="fa-solid fa-envelope"></i>  info@mrmadvertisingdubai.com </li>
+          <li className='email' ><i className="fa-solid fa-envelope"></i>  info@mrmadvertisingdubai.com </li>
           <li ><i className="fa-solid fa-map-location-dot"></i>  Business Bay-Dubai</li>
           <li ><i className="fa-solid fa-phone"></i>  +971561384496 </li>
       </ul>
-      <ul>
-      <div className="group">
+      <ul className='message'>
             <li>Subscription Form </li>
-            <li> <i class="fa-solid mess fa-message"></i> Get updates right in your inbox. Join to get notified with all new stuff </li>
-            <input type="text" placeholder="Email Address" />
-            <i className="fa-solid fa-share"></i>
+            <li>  Get updates right in your inbox. Join to get notified with all new stuff </li>
+            <div className="group">
+              <input type="text" placeholder="Email Address" />
+              <i className="fa-solid fa-share"></i>
           </div>
       </ul>
     </div>

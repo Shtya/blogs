@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Skelton from '../components/Skelton'
+import Hero from "../components/Hero"
+
 
 const Home = () => {
   const [blog , setblog] = useState([])

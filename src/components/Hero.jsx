@@ -1,338 +1,111 @@
 import React, { useEffect } from 'react'
-import {gsap} from 'gsap' ;
-
+import Img1 from "../assets/portfolio/img1.jpg"
 const Hero = () => {
+	useEffect(_=>{
+		document.querySelectorAll('.slide-nav').forEach(function(nav) {
+			nav.addEventListener('click', function(e) {
+			  e.preventDefault();
+			  var current = document.querySelector('.flex--active').dataset.slide;
+			  var next = this.dataset.slide;
+		  
+			  document.querySelectorAll('.slide-nav').forEach(function(nav) {
+				nav.classList.remove('active');
+			  });
+			  this.classList.add('active');
+		  
+			  if (current === next) {
+				return false;
+			  } else {
+				document.querySelector('.slider__warpper').querySelector('.flex__container[data-slide="' + next + '"]').classList.add('flex--preStart');
+				document.querySelector('.flex--active').classList.add('animate--end');
+				setTimeout(function() {
+				  document.querySelector('.flex--preStart').classList.remove('animate--start', 'flex--preStart');
+				  document.querySelector('.flex--preStart').classList.add('flex--active');
+				  document.querySelector('.animate--end').classList.add('animate--start');
+				  document.querySelector('.animate--end').classList.remove('animate--end', 'flex--active');
+				}, 800);
+			  }
+			});
+		  });
+		  
+	} ,[])
 
-useEffect(_=>{
-const buttons = {
-	prev: document.querySelector(".btn--left"),
-	next: document.querySelector(".btn--right"),
-};
-const cardsContainerEl = document.querySelector(".cards__wrapper");
-const appBgContainerEl = document.querySelector(".app__bg");
-
-const cardInfosContainerEl = document.querySelector(".info__wrapper");
-
-buttons.next.addEventListener("click", () => swapCards("right"));
-
-buttons.prev.addEventListener("click", () => swapCards("left"));
-
-function swapCards(direction) {
-	const currentCardEl = cardsContainerEl.querySelector(".current--card");
-	const previousCardEl = cardsContainerEl.querySelector(".previous--card");
-	const nextCardEl = cardsContainerEl.querySelector(".next--card");
-
-	const currentBgImageEl = appBgContainerEl.querySelector(".current--image");
-	const previousBgImageEl = appBgContainerEl.querySelector(".previous--image");
-	const nextBgImageEl = appBgContainerEl.querySelector(".next--image");
-
-	changeInfo(direction);
-	swapCardsClass();
-
-	removeCardEvents(currentCardEl);
-
-	function swapCardsClass() {
-		currentCardEl.classList.remove("current--card");
-		previousCardEl.classList.remove("previous--card");
-		nextCardEl.classList.remove("next--card");
-
-		currentBgImageEl.classList.remove("current--image");
-		previousBgImageEl.classList.remove("previous--image");
-		nextBgImageEl.classList.remove("next--image");
-
-		currentCardEl.style.zIndex = "50";
-		currentBgImageEl.style.zIndex = "-2";
-
-		if (direction === "right") {
-			previousCardEl.style.zIndex = "20";
-			nextCardEl.style.zIndex = "30";
-
-			nextBgImageEl.style.zIndex = "-1";
-
-			currentCardEl.classList.add("previous--card");
-			previousCardEl.classList.add("next--card");
-			nextCardEl.classList.add("current--card");
-
-			currentBgImageEl.classList.add("previous--image");
-			previousBgImageEl.classList.add("next--image");
-			nextBgImageEl.classList.add("current--image");
-		} else if (direction === "left") {
-			previousCardEl.style.zIndex = "30";
-			nextCardEl.style.zIndex = "20";
-
-			previousBgImageEl.style.zIndex = "-1";
-
-			currentCardEl.classList.add("next--card");
-			previousCardEl.classList.add("current--card");
-			nextCardEl.classList.add("previous--card");
-
-			currentBgImageEl.classList.add("next--image");
-			previousBgImageEl.classList.add("current--image");
-			nextBgImageEl.classList.add("previous--image");
-		}
-	}
-}
-
-function changeInfo(direction) {
-	let currentInfoEl = cardInfosContainerEl.querySelector(".current--info");
-	let previousInfoEl = cardInfosContainerEl.querySelector(".previous--info");
-	let nextInfoEl = cardInfosContainerEl.querySelector(".next--info");
-
-	gsap.timeline()
-		.to([buttons.prev, buttons.next], {
-		duration: 0.2,
-		opacity: 0.5,
-		pointerEvents: "none",
-	})
-		.to(
-		currentInfoEl.querySelectorAll(".text"),
-		{
-			duration: 0.4,
-			stagger: 0.1,
-			translateY: "-120px",
-			opacity: 0,
-		},
-		"-="
-	)
-		.call(() => {
-		swapInfosClass(direction);
-	})
-		.call(() => initCardEvents())
-		.fromTo(
-		direction === "right"
-		? nextInfoEl.querySelectorAll(".text")
-		: previousInfoEl.querySelectorAll(".text"),
-		{
-			opacity: 0,
-			translateY: "40px",
-		},
-		{
-			duration: 0.4,
-			stagger: 0.1,
-			translateY: "0px",
-			opacity: 1,
-		}
-	)
-		.to([buttons.prev, buttons.next], {
-		duration: 0.2,
-		opacity: 1,
-		pointerEvents: "all",
-	});
-
-	function swapInfosClass() {
-		currentInfoEl.classList.remove("current--info");
-		previousInfoEl.classList.remove("previous--info");
-		nextInfoEl.classList.remove("next--info");
-
-		if (direction === "right") {
-			currentInfoEl.classList.add("previous--info");
-			nextInfoEl.classList.add("current--info");
-			previousInfoEl.classList.add("next--info");
-		} else if (direction === "left") {
-			currentInfoEl.classList.add("next--info");
-			nextInfoEl.classList.add("previous--info");
-			previousInfoEl.classList.add("current--info");
-		}
-	}
-}
-
-function updateCard(e) {
-	const card = e.currentTarget;
-	const box = card.getBoundingClientRect();
-	const centerPosition = {
-		x: box.left + box.width / 2,
-		y: box.top + box.height / 2,
-	};
-	let angle = Math.atan2(e.pageX - centerPosition.x, 0) * (35 / Math.PI);
-	gsap.set(card, {
-		"--current-card-rotation-offset": `${angle}deg`,
-	});
-	const currentInfoEl = cardInfosContainerEl.querySelector(".current--info");
-	gsap.set(currentInfoEl, {
-		rotateY: `${angle}deg`,
-	});
-}
-
-function resetCardTransforms(e) {
-	const card = e.currentTarget;
-	const currentInfoEl = cardInfosContainerEl.querySelector(".current--info");
-	gsap.set(card, {
-		"--current-card-rotation-offset": 0,
-	});
-	gsap.set(currentInfoEl, {
-		rotateY: 0,
-	});
-}
-
-function initCardEvents() {
-	const currentCardEl = cardsContainerEl.querySelector(".current--card");
-	currentCardEl.addEventListener("pointermove", updateCard);
-	currentCardEl.addEventListener("pointerout", (e) => {
-		resetCardTransforms(e);
-	});
-}
-
-initCardEvents();
-
-function removeCardEvents(card) {
-	card.removeEventListener("pointermove", updateCard);
-}
-
-function init() {
-
-	let tl = gsap.timeline();
-
-	tl.to(cardsContainerEl.children, {
-		delay: 0.15,
-		duration: 0.5,
-		stagger: {
-			ease: "power4.inOut",
-			from: "right",
-			amount: 0.1,
-		},
-		"--card-translateY-offset": "0%",
-	})
-		.to(cardInfosContainerEl.querySelector(".current--info").querySelectorAll(".text"), {
-		delay: 0.5,
-		duration: 0.4,
-		stagger: 0.1,
-		opacity: 1,
-		translateY: 0,
-	})
-		.to(
-		[buttons.prev, buttons.next],
-		{
-			duration: 0.4,
-			opacity: 1,
-			pointerEvents: "all",
-		},
-		"-=0.4"
-	);
-}
-
-const waitForImages = () => {
-	const images = [...document.querySelectorAll("img")];
-	const totalImages = images.length;
-	let loadedImages = 0;
-	const loaderEl = document.querySelector(".loader span");
-
-    gsap.set(cardsContainerEl.children, { "--card-translateY-offset": "100vh" });
-
-	gsap.set(cardInfosContainerEl.querySelector(".current--info").querySelectorAll(".text"), {
-		translateY: "40px",
-		opacity: 0,
-	});
-	gsap.set([buttons.prev, buttons.next], {
-		pointerEvents: "none",
-		opacity: "0",
-	});
-
-
-};
-
-waitForImages();
-
-    } ,[])
   return (
-    <div className='hero'>
-<div class="app">
-
-<div class="cardList">
-    <button class="cardList__btn btn btn--left">
-        <div class="icon">
-            <svg>
-                <use href="#arrow-left"></use>
-            </svg>
-        </div>
-    </button>
-
-    <div class="cards__wrapper">
-        <div class="card current--card">
-            <div class="card__image">
-                <img src="https://source.unsplash.com/Z8dtTatMVMw" alt="" />
-            </div>
-        </div>
-
-        <div class="card next--card">
-            <div class="card__image">
-                <img src="https://source.unsplash.com/9dmycbFE7mQ" alt="" />
-            </div>
-        </div>
-
-        <div class="card previous--card">
-            <div class="card__image">
-                <img src="https://source.unsplash.com/m7K4KzL5aQ8" alt="" />
-            </div>
-        </div>
+	<div className='hero'>
+	
+	<div class="slider__warpper">
+  <div class="flex__container flex--pikachu flex--active" data-slide="1">
+    <div class="flex__item flex__item--left">
+      <div class="flex__content">
+        <p class="text--sub">Pokemon Gen I</p>
+        <h1 class="text--big">Pikachu</h1>
+        <p class="text--normal">Pikachu is an Electric-type Pokémon introduced in Generation I. Pikachu are small, chubby, and incredibly cute mouse-like Pokémon. They are almost completely covered by yellow fur.</p>
+      </div>
+      <p class="text__background">Pikachu</p>
     </div>
-
-    <button class="cardList__btn btn btn--right">
-        <div class="icon">
-            <svg>
-                <use href="#arrow-right"></use>
-            </svg>
-        </div>
-    </button>
+    <div class="flex__item flex__item--right"></div>
+    <img class="pokemon__img" src={Img1} />
+  </div>
+  <div class="flex__container flex--piplup animate--start" data-slide="2">
+    <div class="flex__item flex__item--left">
+      <div class="flex__content">
+        <p class="text--sub">Pokemon Gen IV</p>
+        <h1 class="text--big">Piplup</h1>
+        <p class="text--normal">Piplup is the Water-type Starter Pokémon of the Sinnoh region. It was introduced in Generation IV. Piplup has a strong sense of self-esteem. It seldom accepts food that people give because of its pride.</p>
+      </div>
+      <p class="text__background">Piplup</p>
+    </div>
+    <div class="flex__item flex__item--right"></div>
+    <img class="pokemon__img" src={Img1} />
+  </div>
+  <div class="flex__container flex--blaziken animate--start" data-slide="3">
+    <div class="flex__item flex__item--left">
+      <div class="flex__content">
+        <p class="text--sub">Pokemon Gen III</p>
+        <h1 class="text--big">Blaziken</h1>
+        <p class="text--normal">Blaziken is the Fire/Fighting-type Starter Pokémon of the Hoenn region, introduced in Generation III. Blaziken is a large, bipedal, humanoid bird-like Pokémon that resembles a rooster.</p>
+      </div>
+      <p class="text__background">Blaziken</p>
+    </div>
+    <div class="flex__item flex__item--right"></div>
+    <img class="pokemon__img" src={Img1} />
+  </div>
+  <div class="flex__container flex--dialga animate--start" data-slide="4">
+    <div class="flex__item flex__item--left">
+      <div class="flex__content">
+        <p class="text--sub">Pokemon Gen IV</p>
+        <h1 class="text--big">Dialga</h1>
+        <p class="text--normal">Dialga is a Steel/Dragon-type Legendary Pokémon. Dialga is a sauropod-like Pokémon. It is mainly blue with some gray, metallic portions, such as its chest plate, which has a diamond in the center. It also has various, light blue lines all over
+          its body.</p>
+      </div>
+      <p class="text__background">Dialga</p>
+    </div>
+    <div class="flex__item flex__item--right"></div>
+    <img class="pokemon__img" src="https://s4.postimg.org/43yq9zlxp/dialga.png" />
+  </div>
+  <div class="flex__container flex--zekrom animate--start" data-slide="5">
+    <div class="flex__item flex__item--left">
+      <div class="flex__content">
+        <p class="text--sub">Pokemon Gen V</p>
+        <h1 class="text--big">Zekrom</h1>
+        <p class="text--normal">Zekrom is a Dragon/Electric-type Legendary Pokémon. It is part of the Tao Trio, along with Reshiram and Kyurem. Zekrom is a large, black draconian Pokémon that seems to share its theme with its counterpart, Reshiram. It has piercing red eyes and
+          dark gray to black skin that seems to be armor-like.</p>
+      </div>
+      <p class="text__background">Zekrom</p>
+    </div>
+    <div class="flex__item flex__item--right"></div>
+    <img class="pokemon__img" src="https://s4.postimg.org/malmhgn9p/zekrom.png" />
+  </div>
 </div>
 
-<div class="infoList">
-    <div class="info__wrapper">
-        <div class="info current--info">
-            <h1 class="text name">Highlands</h1>
-            <h4 class="text location">Scotland</h4>
-            <p class="text description">The mountains are calling</p>
-        </div>
-
-        <div class="info next--info">
-            <h1 class="text name">Machu Pichu</h1>
-            <h4 class="text location">Peru</h4>
-            <p class="text description">Adventure is never far away</p>
-        </div>
-
-        <div class="info previous--info">
-            <h1 class="text name">Chamonix</h1>
-            <h4 class="text location">France</h4>
-            <p class="text description">Let your dreams come true</p>
-        </div>
-    </div>
+<div class="slider__navi">
+  <a href="#" class="slide-nav active" data-slide="1">pikachu</a>
+  <a href="#" class="slide-nav" data-slide="2">piplup</a>
+  <a href="#" class="slide-nav" data-slide="3">blaziken</a>
+  <a href="#" class="slide-nav" data-slide="4">dialga</a>
+  <a href="#" class="slide-nav" data-slide="5">zekrom</a>
 </div>
-
-
-<div class="app__bg">
-    <div class="app__bg__image current--image">
-        <img src="https://source.unsplash.com/Z8dtTatMVMw" alt="" />
-    </div>
-    <div class="app__bg__image next--image">
-        <img src="https://source.unsplash.com/9dmycbFE7mQ" alt="" />
-    </div>
-    <div class="app__bg__image previous--image">
-        <img src="https://source.unsplash.com/m7K4KzL5aQ8" alt="" />
-    </div>
-</div>
-</div>
-
-
-
-<svg class="icons" style={{display:'none'}}>
-<symbol id="arrow-left" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
-    <polyline points='328 112 184 256 328 400'
-                 style={{fill:"none" , stroke:"#fff" , strokeLinecap:"round", strokeLinejoin:"round", strokeWidth:"48px"}} />
-</symbol>
-<symbol id="arrow-right" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
-    <polyline points='184 112 328 256 184 400'
-                  style={{fill:"none" , stroke:"#fff" , strokeLinecap:"round", strokeLinejoin:"round", strokeWidth:"48px"}} />
-</symbol>
-</svg>
-
-
-
-
-<div class="support">
-<a href="https://twitter.com/DevLoop01" target="_blank"><i class="fab fa-twitter-square"></i></a>
-<a href="https://dribbble.com/devloop01" target="_blank"><i class="fab fa-dribbble"></i></a>
-</div>
-
-    </div>
+	</div>
   )
 }
 

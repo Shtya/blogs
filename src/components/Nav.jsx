@@ -1,56 +1,55 @@
 import React, { useEffect } from 'react'
 import Logo from "../assets/Logo.webp" ;
-import Img1 from "../assets/portfolio/img1.jpg"
-import Img2 from "../assets/portfolio/img2.jpg"
-import Img3 from "../assets/portfolio/img3.jpg"
-import Img4 from "../assets/portfolio/img4.jpg"
 
 const Nav = () => {
+  let nav = document.querySelector("nav")
+  let app = document.querySelector(".app")
+  let x = document.querySelector(".menu")
+  let cat = document.querySelector(".category")
+  let i = document.querySelector(".cat i")
+
   useEffect(_=>{
-    let nav = document.querySelector("nav")
-    let app = document.querySelector(".app")
-    let x = document.querySelector(".menu")
     window.addEventListener('resize', function() {
       if (window.innerWidth <= 850) {
         nav.style.left = "-300px"
         app.style.paddingLeft = "0" ;
         x.classList.add("fa-bars")
         x.classList.remove("fa-xmark")
+        if(cat.classList.contains("active")) cat.classList.remove("active") 
       }else{
         nav.style.left = "0"
-        app.style.paddingLeft = "310px" ;
+        app.style.paddingLeft = "300px" ;
         x.classList.remove("fa-bars")
         x.classList.add("fa-xmark")
+        if(cat.classList.contains("active")) cat.classList.remove("active") 
       }
     });
   },[])
 
+  const handleCate = ()=>{
+    cat.classList.toggle("active")
+    i.classList.toggle("rotate")
+
+  }
+
   const handleX = ()=>{
-    let nav = document.querySelector("nav")
-    let app = document.querySelector(".app")
-    let x = document.querySelector(".menu")
     
     if(x.classList.contains("fa-xmark")){
       nav.style.left = "-300px"
       app.style.paddingLeft = "0" ;
       x.classList.add("fa-bars")
       x.classList.remove("fa-xmark")
+      if(cat.classList.contains("active")) cat.classList.remove("active") 
     }else{
       nav.style.left = "0"
-      app.style.paddingLeft = "310px" ;
+      app.style.paddingLeft = "300px" ;
       x.classList.remove("fa-bars")
       x.classList.add("fa-xmark")
+      if(cat.classList.contains("active")) cat.classList.remove("active") 
     }
   }
 
-  const data = [
-    {img:Img1 , title:"Lorem ipsum dolor" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, consequatur?"},
-    {img:Img1 , title:"Lorem ipsum dolor" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, consequatur?"},
-    {img:Img1 , title:"Lorem ipsum dolor" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, consequatur?"},
-    {img:Img1 , title:"Lorem ipsum dolor" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, consequatur?"},
-    {img:Img1 , title:"Lorem ipsum dolor" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, consequatur?"},
-    {img:Img1 , title:"Lorem ipsum dolor" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, consequatur?"},
-  ]
+
   return (
     <nav>
       <div className="logo"> 
@@ -66,7 +65,7 @@ const Nav = () => {
       <ul>
         <li>home</li>
         <li>Work</li>
-        <li className='cat'> Category <i className="fa-solid fa-angle-up"></i> </li>
+        <li className='cat' onClick={handleCate}> Category <i className="fa-solid fa-angle-up"></i> </li>
         <li>contact us</li>
         <li>about us</li>
 
@@ -78,21 +77,7 @@ const Nav = () => {
         <i className="fa-brands fa-whatsapp"></i>   
         <i className="fa-brands fa-linkedin-in"></i>
       </div>
-{/* 
-      <div className="boxes">
-              {
-                data.map((e,idx)=>(
-                  <div className="box" key={idx}> 
-                    <img src={e.img} alt="" />
-                    <div className="text">
-                      <div className="h2"> Lorem, ipsum dolor.</div>
-                      <div className="p"></div>
-                    </div>
-                  </div>
-                ))
-              }
-              
-            </div> */}
+
     </nav>
   )
 }
