@@ -1,7 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Skelton from '../components/Skelton'
-import Hero from "../components/Hero"
+import Hero from '../components/Hero'
+import Nav2 from '../components/Nav2'
 
 
 const Home = () => {
@@ -17,8 +18,8 @@ const Home = () => {
 
   return (
     <div className='home'>
-      {/* <Hero /> */}
-      
+      {/* <Nav2 /> */}
+      <Hero />
       <div className="boxes-blogs">
         <div className="container">
           {

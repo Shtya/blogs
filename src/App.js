@@ -5,6 +5,8 @@ import Home from "./pages/Home.jsx"
 import Footer from './components/Footer.jsx'
 import Nav from "./components/Nav.jsx"
 import Category from './components/Category.jsx'
+import Contactus from './components/Contactus.jsx'
+import Settings from './components/Settings.jsx'
 
 export const Social_Media = ["https://www.facebook.com/MRMadvertisingDubai" , "https://www.instagram.com/mrmadvertising/" , "https://www.linkedin.com/company/mrm-advertising-media" , "https://api.whatsapp.com/send?phone=+971561384496&text=Hello%2C%20world!"]
 
@@ -16,9 +18,13 @@ const App = () => {
       <Nav />
       <div className='app'>
       <Category/>
+      <Contactus />
+      {/* <Settings /> */}
+
       <Routes  >
         <Route  path='/'    element={<Home />} />                                                 
       </Routes>
+
       <Footer />
       </div>
     </div>

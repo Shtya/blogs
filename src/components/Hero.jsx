@@ -1,111 +1,73 @@
-import React, { useEffect } from 'react'
-import Img1 from "../assets/portfolio/img1.jpg"
+import React from 'react'
+import SwiperCore from "swiper"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay , Navigation , Scrollbar  , EffectCube  , EffectCreative } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar';
+import 'swiper/swiper-bundle.css';
+import 'swiper/css/effect-cube';
+import 'swiper/css/effect-creative';
+
+
+import Img1 from "../assets/portfolio/img1.jpg" ;
+import Img2 from "../assets/portfolio/img2.jpg" ;
+import Img3 from "../assets/portfolio/img3.jpg" ;
+import Img4 from "../assets/portfolio/img4.jpg" ;
+
+const settings = {
+    slidesPerView: 1 ,
+    spaceBetween: 0 ,
+    loop:true, 
+    speed: 2000 ,
+    autoplay:{delay: 4000 , "disableOnInteraction": false} ,
+    // effect : 'cube' ,
+    effect : 'creative' ,
+    creativeEffect : {
+        prev: {
+          shadow: true,
+          translate: [0, 0, -400],
+        },
+        next: {
+          translate: ['100%', 0, 0],
+        },
+      } ,
+        // grabCursor : true ,
+        // cubeEffect : {
+        //   shadow: true,
+        //   slideShadows: true,
+        //   shadowOffset: 20,
+        //   shadowScale: 0.94,
+        // } ,
+    pagination: {clickable: true },
+    modules: [ Autoplay , Navigation , Scrollbar , EffectCube , EffectCreative],
+    navigation:true,
+  }
+
+  const data = [
+    {img:Img1 , title:"Areda Slide 1" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
+    {img:Img2 , title:"Areda Slide 2" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
+    {img:Img3 , title:"Areda Slide 3" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
+    {img:Img4 , title:"Areda Slide 4" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
+  ]
+
+
 const Hero = () => {
-	useEffect(_=>{
-		document.querySelectorAll('.slide-nav').forEach(function(nav) {
-			nav.addEventListener('click', function(e) {
-			  e.preventDefault();
-			  var current = document.querySelector('.flex--active').dataset.slide;
-			  var next = this.dataset.slide;
-		  
-			  document.querySelectorAll('.slide-nav').forEach(function(nav) {
-				nav.classList.remove('active');
-			  });
-			  this.classList.add('active');
-		  
-			  if (current === next) {
-				return false;
-			  } else {
-				document.querySelector('.slider__warpper').querySelector('.flex__container[data-slide="' + next + '"]').classList.add('flex--preStart');
-				document.querySelector('.flex--active').classList.add('animate--end');
-				setTimeout(function() {
-				  document.querySelector('.flex--preStart').classList.remove('animate--start', 'flex--preStart');
-				  document.querySelector('.flex--preStart').classList.add('flex--active');
-				  document.querySelector('.animate--end').classList.add('animate--start');
-				  document.querySelector('.animate--end').classList.remove('animate--end', 'flex--active');
-				}, 800);
-			  }
-			});
-		  });
-		  
-	} ,[])
-
   return (
-	<div className='hero'>
-	
-	<div class="slider__warpper">
-  <div class="flex__container flex--pikachu flex--active" data-slide="1">
-    <div class="flex__item flex__item--left">
-      <div class="flex__content">
-        <p class="text--sub">Pokemon Gen I</p>
-        <h1 class="text--big">Pikachu</h1>
-        <p class="text--normal">Pikachu is an Electric-type Pokémon introduced in Generation I. Pikachu are small, chubby, and incredibly cute mouse-like Pokémon. They are almost completely covered by yellow fur.</p>
-      </div>
-      <p class="text__background">Pikachu</p>
+    <div className='hero'>
+        <Swiper  {...settings} className='swiper'   >
+            {data.map((ele,idx)=>( 
+                <SwiperSlide key={idx} className='box' >  
+                    <div className="coverImg"> <img src={ele.img} alt="" /></div>
+                    <div className="text">
+                        <div className="h2"> {ele.title} </div>
+                        <div className="p"> {ele.desc} </div>
+                        <div className="bt"> View More </div>
+                    </div>
+                </SwiperSlide> ))}
+        </Swiper>
     </div>
-    <div class="flex__item flex__item--right"></div>
-    <img class="pokemon__img" src={Img1} />
-  </div>
-  <div class="flex__container flex--piplup animate--start" data-slide="2">
-    <div class="flex__item flex__item--left">
-      <div class="flex__content">
-        <p class="text--sub">Pokemon Gen IV</p>
-        <h1 class="text--big">Piplup</h1>
-        <p class="text--normal">Piplup is the Water-type Starter Pokémon of the Sinnoh region. It was introduced in Generation IV. Piplup has a strong sense of self-esteem. It seldom accepts food that people give because of its pride.</p>
-      </div>
-      <p class="text__background">Piplup</p>
-    </div>
-    <div class="flex__item flex__item--right"></div>
-    <img class="pokemon__img" src={Img1} />
-  </div>
-  <div class="flex__container flex--blaziken animate--start" data-slide="3">
-    <div class="flex__item flex__item--left">
-      <div class="flex__content">
-        <p class="text--sub">Pokemon Gen III</p>
-        <h1 class="text--big">Blaziken</h1>
-        <p class="text--normal">Blaziken is the Fire/Fighting-type Starter Pokémon of the Hoenn region, introduced in Generation III. Blaziken is a large, bipedal, humanoid bird-like Pokémon that resembles a rooster.</p>
-      </div>
-      <p class="text__background">Blaziken</p>
-    </div>
-    <div class="flex__item flex__item--right"></div>
-    <img class="pokemon__img" src={Img1} />
-  </div>
-  <div class="flex__container flex--dialga animate--start" data-slide="4">
-    <div class="flex__item flex__item--left">
-      <div class="flex__content">
-        <p class="text--sub">Pokemon Gen IV</p>
-        <h1 class="text--big">Dialga</h1>
-        <p class="text--normal">Dialga is a Steel/Dragon-type Legendary Pokémon. Dialga is a sauropod-like Pokémon. It is mainly blue with some gray, metallic portions, such as its chest plate, which has a diamond in the center. It also has various, light blue lines all over
-          its body.</p>
-      </div>
-      <p class="text__background">Dialga</p>
-    </div>
-    <div class="flex__item flex__item--right"></div>
-    <img class="pokemon__img" src="https://s4.postimg.org/43yq9zlxp/dialga.png" />
-  </div>
-  <div class="flex__container flex--zekrom animate--start" data-slide="5">
-    <div class="flex__item flex__item--left">
-      <div class="flex__content">
-        <p class="text--sub">Pokemon Gen V</p>
-        <h1 class="text--big">Zekrom</h1>
-        <p class="text--normal">Zekrom is a Dragon/Electric-type Legendary Pokémon. It is part of the Tao Trio, along with Reshiram and Kyurem. Zekrom is a large, black draconian Pokémon that seems to share its theme with its counterpart, Reshiram. It has piercing red eyes and
-          dark gray to black skin that seems to be armor-like.</p>
-      </div>
-      <p class="text__background">Zekrom</p>
-    </div>
-    <div class="flex__item flex__item--right"></div>
-    <img class="pokemon__img" src="https://s4.postimg.org/malmhgn9p/zekrom.png" />
-  </div>
-</div>
-
-<div class="slider__navi">
-  <a href="#" class="slide-nav active" data-slide="1">pikachu</a>
-  <a href="#" class="slide-nav" data-slide="2">piplup</a>
-  <a href="#" class="slide-nav" data-slide="3">blaziken</a>
-  <a href="#" class="slide-nav" data-slide="4">dialga</a>
-  <a href="#" class="slide-nav" data-slide="5">zekrom</a>
-</div>
-	</div>
   )
 }
 

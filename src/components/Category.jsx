@@ -5,12 +5,12 @@ import Img3 from "../assets/portfolio/img3.jpg"
 import Img4 from "../assets/portfolio/img4.jpg"
 
 const data = [
-    {img:Img1 , title:"Lorem ipsum dolor" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, consequatur?"},
-    {img:Img2 , title:"Lorem ipsum dolor" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, consequatur?"},
-    {img:Img1 , title:"Lorem ipsum dolor" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, consequatur?"},
-    {img:Img2 , title:"Lorem ipsum dolor" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, consequatur?"},
-    {img:Img3 , title:"Lorem ipsum dolor" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, consequatur?"},
-    {img:Img4 , title:"Lorem ipsum dolor" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, consequatur?"},
+    {img:Img1 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img2 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img1 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img2 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img3 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img4 , title:"Lorem ipsum dolor" , desc:"21"},
   ]
 
 const Category = () => {

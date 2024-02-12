@@ -40,6 +40,7 @@ const Nav = () => {
     let app = document.querySelector(".app")
     let x = document.querySelector(".menu")
     let cat = document.querySelector(".category")
+    let contact = document.querySelector(".contact-us")
     
     if(x.classList.contains("fa-xmark")){
       nav.style.left = "-300px"
@@ -47,6 +48,7 @@ const Nav = () => {
       x.classList.add("fa-bars")
       x.classList.remove("fa-xmark")
       if(cat.classList.contains("active")) cat.classList.remove("active") 
+      contact.classList.remove("show")
     }else{
       nav.style.left = "0"
       app.style.paddingLeft = "300px" ;
@@ -54,6 +56,11 @@ const Nav = () => {
       x.classList.add("fa-xmark")
       if(cat.classList.contains("active")) cat.classList.remove("active") 
     }
+  }
+
+  const handleContact = ()=>{
+    let contact = document.querySelector(".contact-us")
+    contact.classList.toggle("show")
   }
 
 
@@ -73,7 +80,7 @@ const Nav = () => {
         <li>home</li>
         <li>Work</li>
         <li className='cat' onClick={handleCate}> Category <i className="fa-solid fa-angle-up"></i> </li>
-        <li>contact us</li>
+        <li onClick={handleContact}>contact us</li>
         <li>about us</li>
 
       </ul>
