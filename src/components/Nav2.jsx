@@ -5,20 +5,30 @@ import Logo from "../assets/Logo1.webp"
 const Nav2 = () => {
   return (
     <div className='Nav2'>
-        <div className="logo">
-        <i className="fa-solid fa-bars"></i>
-        <img src={Logo} alt="" />
-        </div>
         
-        <div className="container">
-        <div className="social">
+      <div className="container">
         <i className="fa-brands fa-facebook-f"></i> 
         <i className="fa-brands fa-instagram"></i>
         <i className="fa-brands fa-twitter"></i>
         <i className="fa-brands fa-whatsapp"></i>   
         <i className="fa-brands fa-linkedin-in"></i>
       </div>
+
+      <div className="container1">
+        <img src={Logo} alt="" />
+        <ul>
+          <li>home</li>
+          <li>Work</li>
+          <li className='cat'> Category <i className="fa-solid fa-angle-up"></i> </li>
+          <li >contact us</li>
+          <li>about us</li>
+        </ul>
+        <i class="fa-solid fa-magnifying-glass"> </i>
       </div>
+
+      <div className="clip1">  </div>
+      <div className="clip2">  </div>
+
     </div>
   )
 }

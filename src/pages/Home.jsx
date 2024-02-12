@@ -3,9 +3,12 @@ import React, { useEffect, useState } from 'react'
 import Skelton from '../components/Skelton'
 import Hero from '../components/Hero'
 import Nav2 from '../components/Nav2'
+import Qoutes from '../components/Qoutes'
+import { useNavigate } from 'react-router'
 
 
 const Home = () => {
+  const nav = useNavigate() ;
   const [blog , setblog] = useState([])
   const [next , setnext] = useState({from:0 ,to:8})
   const handleClick = ()=>{
@@ -20,12 +23,31 @@ const Home = () => {
     <div className='home'>
       {/* <Nav2 /> */}
       <Hero />
+      <Qoutes />
       <div className="boxes-blogs">
+        <div className="options">
+        <div className="container1">
+        <select className='select1'>
+          <option selected value="0">Select</option>
+          <option value="1">Tips</option>
+          <option value="2">Digital News</option>
+          <option value="3"> Trands</option>
+        </select>
+        <div className="group">
+          <input type="text" placeholder='search' />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <select className='select2'>
+          <option value="1">Expand Posts</option>
+          <option value="2"> Shrink Posts</option>
+        </select>
+        </div>
+        </div>
         <div className="container">
           {
             blog.length >= 1 ?  
             blog.slice(next.from , next.to)?.map((e,idx)=>(
-              <div className={`box box-${idx+1}`} >
+              <div className={`box box-${idx+1}`} onClick={_=> nav("/blog/1")} >
                 <img src={e.thumbnail} alt="" />
                 <div className="text">
 

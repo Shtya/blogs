@@ -7,6 +7,8 @@ import Nav from "./components/Nav.jsx"
 import Category from './components/Category.jsx'
 import Contactus from './components/Contactus.jsx'
 import Settings from './components/Settings.jsx'
+import Nav2 from './components/Nav2.jsx'
+import BlogDetails from './pages/BlogDetails.jsx'
 
 export const Social_Media = ["https://www.facebook.com/MRMadvertisingDubai" , "https://www.instagram.com/mrmadvertising/" , "https://www.linkedin.com/company/mrm-advertising-media" , "https://api.whatsapp.com/send?phone=+971561384496&text=Hello%2C%20world!"]
 
@@ -23,6 +25,7 @@ const App = () => {
 
       <Routes  >
         <Route  path='/'    element={<Home />} />                                                 
+        <Route  path='/blog/:id'    element={<BlogDetails />} />                                                 
       </Routes>
 
       <Footer />

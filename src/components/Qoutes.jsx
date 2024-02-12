@@ -1,6 +1,6 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay , Navigation , Scrollbar  , EffectCube  , EffectCreative } from 'swiper/modules';
+import { Pagination , Autoplay , Navigation , Scrollbar  , EffectCube  , EffectCreative } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -10,18 +10,18 @@ import 'swiper/css/effect-cube';
 import 'swiper/css/effect-creative';
 
 
-import Img1 from "../assets/portfolio/img1.jpg" ;
-import Img2 from "../assets/portfolio/img2.jpg" ;
-import Img3 from "../assets/portfolio/img3.jpg" ;
-import Img4 from "../assets/portfolio/img4.jpg" ;
+import Img1 from "../assets/services/_ (1).webp" ;
+import Img2 from "../assets/services/_ (2).webp" ;
+import Img3 from "../assets/services/_ (3).webp" ;
+import Img4 from "../assets/services/_ (4).webp" ;
 import { useNavigate } from 'react-router';
 
 const settings = {
     slidesPerView: 1 ,
     spaceBetween: 0 ,
     loop:true, 
-    speed: 2000 ,
-    autoplay:{delay: 4000 , "disableOnInteraction": false} ,
+    // speed: 2000 ,
+    // autoplay:{delay: 4000 , "disableOnInteraction": false} ,
     effect : 'creative' ,
     creativeEffect : {
         prev: {
@@ -33,8 +33,8 @@ const settings = {
         },
       } ,
     pagination: {clickable: true },
-    modules: [ Autoplay , Navigation , Scrollbar , EffectCube , EffectCreative],
-    navigation:false,
+    modules: [ Pagination , Autoplay , Navigation , Scrollbar , EffectCube , EffectCreative],
+    navigation:true,
   }
 
   const data = [
@@ -45,18 +45,22 @@ const settings = {
   ]
 
 
-const Hero = () => {
+const Qoutes = () => {
   const nav = useNavigate() ;
-  
   return (
-    <div className='hero'>
-        <Swiper  {...settings} className='swiper'   >
+    <div className='Qoutes'>
+        <Swiper  {...settings} className='swiper '   >
             {data.map((ele,idx)=>( 
                 <SwiperSlide key={idx} className='box' >  
                     <div className="coverImg"> <img src={ele.img} alt="" /></div>
                     <div className="text">
                         <div className="h2"> {ele.title} </div>
                         <div className="p"> {ele.desc} </div>
+                        <div className="details">
+                            <div className="time"> <i className="fa-regular fa-clock"></i>  Feb 20, 2018 </div>
+                            <div className="comments"> <i className="fa-regular fa-message"></i>  21 </div>
+                        </div>
+
                         <div className="bt" onClick={_=> nav("/blog/1")}> View More </div>
                     </div>
                 </SwiperSlide> ))}
@@ -65,4 +69,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default Qoutes
