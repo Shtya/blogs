@@ -4,6 +4,7 @@ import {Routes , Route, useLocation} from "react-router-dom"
 import Home from "./pages/Home.jsx"
 import Footer from './components/Footer.jsx'
 import Nav from "./components/Nav.jsx"
+import CategoryPage from "./pages/CategoryPage.jsx"
 import Category from './components/Category.jsx'
 import Contactus from './components/Contactus.jsx'
 import Settings from './components/Settings.jsx'
@@ -26,6 +27,7 @@ const App = () => {
       <Routes  >
         <Route  path='/'    element={<Home />} />                                                 
         <Route  path='/blog/:id'    element={<BlogDetails />} />                                                 
+        <Route  path='/category/:id'    element={<CategoryPage />} />                                                 
       </Routes>
 
       <Footer />

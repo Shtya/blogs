@@ -3,6 +3,7 @@ import Img1 from "../assets/portfolio/img1.jpg"
 import Img2 from "../assets/portfolio/img2.jpg"
 import Img3 from "../assets/portfolio/img3.jpg"
 import Img4 from "../assets/portfolio/img4.jpg"
+import { useNavigate } from 'react-router'
 
 const data = [
     {img:Img1 , title:"Lorem ipsum dolor" , desc:"21"},
@@ -22,6 +23,8 @@ const data = [
   ]
 
 const Category = () => {
+  const nav = useNavigate("/") ;
+
   const handleCate = ()=>{
     let cat = document.querySelector(".category")
     let i = document.querySelector(".cat i")
@@ -33,6 +36,15 @@ const Category = () => {
     i.classList.toggle("rotate")
 
   }
+  const Go = ()=>{
+    nav("/category/3")
+    let cat = document.querySelector(".category")
+    cat.classList.forEach(className => {
+      if (className !== 'category') {
+        cat.classList.remove(className);
+      }})
+  }
+  
   return (
     <div className='category'>
       <div className="container">
@@ -40,7 +52,7 @@ const Category = () => {
 
               {
                 data.map((e,idx)=>(
-                  <div className="box" key={idx}> 
+                  <div className="box" key={idx} onClick={Go}> 
                     <img src={e.img} alt="" />
                     <div className="text">
                       <div className="h2">{e.title}</div>

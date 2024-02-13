@@ -44,7 +44,7 @@ const Qoutes = ({data , classn}) => {
         <Swiper  {...settings} className='swiper container '   >
             {data.slice(0 , 6).map((ele,idx)=>( 
                 <SwiperSlide key={idx} className='box' >  
-                    <div className="coverImg"> <img src={ele.thumbnail} alt="" /></div>
+                    <div className="coverImg"> <img src={ele.thumbnail || ele.img} alt="" /></div>
                     <div className="text">
                         <div className="h2"> {ele.title} </div>
                         <div className="details">

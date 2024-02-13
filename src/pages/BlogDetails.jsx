@@ -10,14 +10,8 @@ import Img2 from "../assets/services/_ (2).webp" ;
 import Img3 from "../assets/services/_ (3).webp" ;
 import Img4 from "../assets/services/_ (4).webp" ;
 import { useNavigate } from 'react-router'
-const Related = [
-  {img:Img1 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  1" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
-  {img:Img2 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  2" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
-  {img:Img3 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  3" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
-  {img:Img4 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  4" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
-  {img:Img4 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  5" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
-  {img:Img4 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  6" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
-]
+import user1 from "../assets/user.gif"
+import user2 from "../assets/user2.png"
 const BlogDetails = () => {
   const [data , setdata] = useState([])
   const [related , setrelated] = useState([])
@@ -50,19 +44,17 @@ const BlogDetails = () => {
         <div className="container">
         <div className="ImgCover"> <img src={Cover} alt="" /> </div>
         <div className="text">
-          <div className="hash"> #Digital_News </div>
+          <div className="hash"> Digital News </div>
           <div className="h2"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. </div>
           <div className="p"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. At minima laborum in voluptates sint consequatur dignissimos repellat fuga, et beatae unde, quo soluta aliquam iure, mollitia impedit vero! Exercitationem, ducimus! </div>
         </div>
         </div>
       </div>
-      {/* <Divider /> */}
 
       
       <div className="blog-detail" id='blog-detail'>
         <div className="container">
           <div dangerouslySetInnerHTML={{ __html: data?.description }} />
-
           <div className="related" id='related'>
             {
               related.slice(0 , 4).map((ele,index)=>(
@@ -80,6 +72,35 @@ const BlogDetails = () => {
                 </div>
               ))
             }
+          </div>
+          
+        </div>
+
+          <div className="container">
+        <div className="reaction">
+          {
+            Array(3).fill(1).map((e,index)=>(
+              <div className="comments">
+            <img src={user2} alt="" />
+            <div className="text">
+              <div className="name"> Nathasya Putri</div>
+              <div className="date">DECEMBER 23, 2019 AT 11:55 AM</div>
+              <div className="p"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, aut voluptates maxime ad tenetur quibusdam dolorum veritatis laboriosam. Rem, esse. </div>
+            </div>
+            <div className="replay">
+            <i class="fa-solid fa-reply-all"></i> reply
+            </div>
+          </div>
+            ))
+          }
+
+          <div className="addcomment">
+          <img src={user2} alt="" />
+            <div className="add">
+            <input type="text" placeholder='Enter Comment' />
+            <div className='bt'> Publish</div>
+            </div>
+          </div>
           </div>
 
         </div>

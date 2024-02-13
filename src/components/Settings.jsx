@@ -9,6 +9,7 @@ const Settings = () => {
     
     const Grid = document.querySelectorAll('.grid div');
     let blogboxes = document.querySelector(".boxes-blogs")
+    let BODY = document.querySelector("body")
     Grid.forEach(item => {
     item.addEventListener('click', function() {
       Grid.forEach(li => { li.classList.remove('ac'); });
@@ -22,6 +23,8 @@ const Settings = () => {
     item.addEventListener('click', function() {
       Mode.forEach(li => { li.classList.remove('ac'); });
       item.classList.add('ac');
+      if(item.classList.contains("dark")){ BODY.classList.add("dark-mode")        }
+      if(item.classList.contains("light")){BODY.classList.remove("dark-mode") }
       }) });
     
     const Translate = document.querySelectorAll('.trans div');
