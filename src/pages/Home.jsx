@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Skelton from '../components/Skelton'
 import Hero from '../components/Hero'
-import Nav2 from '../components/Nav2'
+import Logo from '../assets/Logo1.webp'
 import Qoutes from '../components/Qoutes'
 import { useNavigate } from 'react-router'
 
@@ -21,7 +21,7 @@ const Home = () => {
 
   return (
     <div className='home'>
-      {/* <Nav2 /> */}
+      <div className="LOGO"> <img src={Logo} alt="" /> </div>
       <Hero />
       <Qoutes />
       <div className="boxes-blogs">
@@ -38,8 +38,8 @@ const Home = () => {
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
         <select className='select2'>
-          <option value="1">Expand Posts</option>
-          <option value="2"> Shrink Posts</option>
+          <option value="1">Latest Posts</option>
+          <option value="2"> Oldest Posts</option>
         </select>
         </div>
         </div>

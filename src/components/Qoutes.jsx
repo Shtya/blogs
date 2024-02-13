@@ -1,12 +1,13 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination , Autoplay , Navigation , Scrollbar  , EffectCube  , EffectCreative } from 'swiper/modules';
+import { Pagination , Autoplay , Navigation , Scrollbar , EffectFlip  , EffectCube , EffectCards  , EffectCreative } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 import 'swiper/swiper-bundle.css';
-import 'swiper/css/effect-cube';
+import 'swiper/css/effect-flip';
+import 'swiper/css/effect-cards';
 import 'swiper/css/effect-creative';
 
 
@@ -20,20 +21,11 @@ const settings = {
     slidesPerView: 1 ,
     spaceBetween: 0 ,
     loop:true, 
-    // speed: 2000 ,
-    // autoplay:{delay: 4000 , "disableOnInteraction": false} ,
-    effect : 'creative' ,
-    creativeEffect : {
-        prev: {
-          shadow: true,
-          translate: [0, 0, -400],
-        },
-        next: {
-          translate: ['100%', 0, 0],
-        },
-      } ,
+    speed: 2000 ,
+    autoplay:{delay: 4000 , "disableOnInteraction": false} ,
+    effect : 'cards' ,
     pagination: {clickable: true },
-    modules: [ Pagination , Autoplay , Navigation , Scrollbar , EffectCube , EffectCreative],
+    modules: [ Pagination , Autoplay , Navigation , Scrollbar , EffectCards , EffectFlip , EffectCreative],
     navigation:true,
   }
 
@@ -49,7 +41,7 @@ const Qoutes = () => {
   const nav = useNavigate() ;
   return (
     <div className='Qoutes'>
-        <Swiper  {...settings} className='swiper '   >
+        <Swiper  {...settings} className='swiper container '   >
             {data.map((ele,idx)=>( 
                 <SwiperSlide key={idx} className='box' >  
                     <div className="coverImg"> <img src={ele.img} alt="" /></div>

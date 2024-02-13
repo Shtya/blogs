@@ -7,24 +7,26 @@ const BlogDetails = () => {
   const [data , setdata] = useState([])
   const [related , setrelated] = useState([])
   useEffect(_=>{
-    axios.get("https://mrm-0-server.vercel.app/api/posts").then(e => setdata(e.data.data[0]) )
-    axios.get("https://mrm-0-server.vercel.app/api/posts").then(e => setrelated(e.data.data) )
+     axios.get("https://mrm-0-server.vercel.app/api/posts").then(e =>{
+       setrelated(e.data.data)
+       setdata(e.data.data[0]) 
+      })
   } ,[])
 
-  // useEffect(_=>{
-  //   window.onscroll = function() {
-  //     var box = document.querySelector('.related');
+  useEffect(_=>{
+    window.onscroll = function() {
+      var box = document.querySelector('.related');
 
-  //     var content = document.querySelector('.blog-detail');
-  //     var boxPosition = content.offsetTop;
+      var content = document.querySelector('.blog-detail');
+      var boxPosition = content.offsetTop;
       
-  //     if (window.pageYOffset >= boxPosition) {
-  //       box.classList.add('fixed');
-  //     } else {
-  //       box.classList.remove('fixed');
-  //     }
-  //   };
-  // } ,[])
+      if (window.pageYOffset >= boxPosition) {
+        box.classList.add('fixed');
+      } else {
+        box.classList.remove('fixed');
+      }
+    };
+  } ,[])
 
   return (
     <div className='BlogDetails'>

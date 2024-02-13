@@ -21,7 +21,7 @@ const App = () => {
       <div className='app'>
       <Category/>
       <Contactus />
-      {/* <Settings /> */}
+      <Settings />
 
       <Routes  >
         <Route  path='/'    element={<Home />} />                                                 

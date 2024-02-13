@@ -11,12 +11,30 @@ const data = [
     {img:Img2 , title:"Lorem ipsum dolor" , desc:"21"},
     {img:Img3 , title:"Lorem ipsum dolor" , desc:"21"},
     {img:Img4 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img3 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img4 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img3 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img4 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img3 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img4 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img3 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img4 , title:"Lorem ipsum dolor" , desc:"21"},
   ]
 
 const Category = () => {
+  const handleCate = ()=>{
+    let cat = document.querySelector(".category")
+    let i = document.querySelector(".cat i")
+    cat.classList.toggle("active2")
+    // cat.classList.toggle("active")
+    i.classList.toggle("rotate")
+
+  }
   return (
     <div className='category'>
       <div className="container">
+      <i onClick={handleCate} className="fa-solid fa-xmark"></i>
+
               {
                 data.map((e,idx)=>(
                   <div className="box" key={idx}> 
