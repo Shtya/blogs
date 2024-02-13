@@ -18,7 +18,7 @@ import { useNavigate } from 'react-router';
 
 const settings = {
     slidesPerView: 1 ,
-    spaceBetween: 5 ,
+    spaceBetween: 15 ,
     loop:true, 
     speed: 2000 ,
     autoplay:{delay: 4000 , "disableOnInteraction": false} ,
