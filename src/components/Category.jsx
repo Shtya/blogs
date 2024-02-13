@@ -25,8 +25,11 @@ const Category = () => {
   const handleCate = ()=>{
     let cat = document.querySelector(".category")
     let i = document.querySelector(".cat i")
-    cat.classList.toggle("active2")
-    // cat.classList.toggle("active")
+    cat.classList.forEach(className => {
+      if (className !== 'category') {
+        cat.classList.remove(className);
+      }})
+
     i.classList.toggle("rotate")
 
   }

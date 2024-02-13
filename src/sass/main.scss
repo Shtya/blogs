@@ -13,6 +13,7 @@
   --text-color: #cdb045;
   --gradient: linear-gradient(to bottom, #fedf4e, #65421b);
   --grad1: linear-gradient(to left, #5236a9, #c3183d);
+  --grad2: linear-gradient(to left, #5336a99b, #c3183ddd);
   --shadow:  0 5px 15px rgba(0, 0, 0, 0.142) ;
   --first-color : #ededed ;
   --second-color : #ffffff ;
@@ -480,12 +481,12 @@ nav{
           font: inherit;
           width: 200px;
           padding: 10px 10px;
-          background: var(--arrow-icon) no-repeat right 0.8em center/1.4em, linear-gradient(to left, rgb(127 125 125) 3em, #fff 3em);
+          background: var(--arrow-icon) no-repeat right 0.8em center/1.4em, linear-gradient(to left, #663195c4 3em, #fff 3em);
           color: black;
           border-radius: 20px;
-          box-shadow:var(--shadow);
+          box-shadow: var(--shadow);
           cursor: pointer;
-          font-family: 'Poppins';
+          font-family: "Poppins";
           text-transform: uppercase;
           font-weight: 600;
           padding-left: 20px;
@@ -537,11 +538,14 @@ nav{
       
     }
     .container{
-      display: grid; grid-template-columns:  repeat(auto-fill, minmax(350px, 1fr)) ; gap: 20px; 
+      display: grid; grid-template-columns:  1fr 1fr; gap: 20px; 
+      @media (max-width:600px) {
+        grid-template-columns: 1fr;
+      }
       .box{
         min-height: 500px ;
         background-color: var(--second-color);
-        border-radius: 20px ;
+        border-radius: 30px 30px 0 0 ;
         overflow: hidden;
         box-shadow:var(--shadow);
         background: url("../assets/wall.png");
@@ -551,7 +555,7 @@ nav{
           width: 100%;
           height: 300px;
           object-fit: cover;
-          border-radius: 20px 20px 10px 10px;
+          // border-radius: 20px 20px 10px 10px;
         }
         .text{
         padding: 10px;
@@ -579,7 +583,7 @@ nav{
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
-          -webkit-line-clamp: 7;
+          -webkit-line-clamp: 5;
           -webkit-box-orient: vertical;
           margin-bottom: 10px;
           img{display: none;}
@@ -591,7 +595,6 @@ nav{
       }
     }
     
-
     .pagination{
       display: flex; align-items: center; justify-content: center; gap: 5px;
       margin-top: 30px;
@@ -606,7 +609,9 @@ nav{
         cursor: pointer;
         transition: .3s;
         &.active{
-          background-color: var(--text-color);
+          background: var(--grad2);
+          color: white;
+          font-weight: bold ;
         }
         &:hover{
           background-color: var(--second-color);
@@ -837,7 +842,10 @@ padding: 0 0 20px;
 overflow: hidden;
 margin-top: -20px;
 svg{
-
+  @media (min-width:1050px) {
+    top: -37px;
+    position: relative;
+  }
   path{
     fill: var(--first-color) ;
     // fill: url("../assets/wall.png");
@@ -916,6 +924,9 @@ svg{
 
       i{
         font-size: 30px;
+        background: linear-gradient(to right , #888 , white);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
         &.mess{
           font-size: 60px;
         }
@@ -937,8 +948,9 @@ svg{
         right: 0 ;
         top: 50%;
         transform: translateY(-50%);
-        background-color: var(--text-color);
+        background: var(--grad2);
         padding: 14px;
+        color: white;
         cursor: pointer;
         transition: .2s;
         &:hover{
@@ -994,7 +1006,7 @@ svg{
         position: absolute;
         left: 80px;
         top: 50px;
-        background-color:#b1afaf6a;
+        background: var(--grad2) ;
         backdrop-filter: blur(1px);
         height: calc(100% - 100px);
         display: flex; flex-direction: column;  justify-content: center;
@@ -1016,7 +1028,7 @@ svg{
         }
         .p{
           text-transform: capitalize;
-          color: black;
+          color: white;
         }
       }
     }
@@ -1024,14 +1036,14 @@ svg{
 }
 
 .Qoutes{
-  margin-top: 20px;
+  margin-top: 5px;
   .swiper-button-next, .swiper-button-prev {
     bottom: 20px;
     right: 30px;
     top: unset;
     width: 50px;
     height: 50px;
-    background: var(--blue);
+    background: var(--grad2);
     border-radius: 50%;
     color: white;
     &.swiper-button-next{right: 30px;}
@@ -1048,15 +1060,15 @@ svg{
     }
   }
   .swiper-pagination-bullet{
-    outline: 3px solid var(--blue);
-    border: 7px solid white;
+    outline: 2px solid #663195;
+    border: 7px solid rgb(195, 21, 21);
     margin-right: 15px !important;
     position: relative;
     bottom: 20px !important;
     top: unset;
     @media (max-width:700px) {
-    border: 4px solid white;
-    outline: 2px solid var(--blue);
+    border: 4px solid rgb(195, 21, 21);
+    outline: 2px solid #663195;
     }
 }
 .swiper-pagination-bullets {
@@ -1087,7 +1099,7 @@ svg{
       position: absolute;
       left: 25px;
       top: 25px;
-      background-color:#a6a2a238;
+      background: var(--grad2);
       backdrop-filter: blur(1px);
       height: calc(100% - 110px);
       display: flex; flex-direction: column;  justify-content: center;
@@ -1119,20 +1131,21 @@ svg{
     left: 0;
     width: 100%;
     box-shadow: var(--shadow);
-    padding: 20px 0;
-    transition: 0.3s;
+    padding: 40px 40px;
+    transition: 0.5s;
     display: flex;
     align-items: center;
     background-color: rgba(102, 100, 100, 0.29);
     backdrop-filter: blur(5px);
-    z-index: 1000000000000;
-    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    z-index: 100000000;
+    clip-path: circle(0% at 50% 50%);
     height: 100vh;
     overflow: auto;
     overflow: -webkit-scrollbar;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    &.active2{ clip-path:polygon(0 0, 100% 0%, 100% 100%, 0% 100%) !important;     }
+    &.active{ padding: 20px 0px 20px 300px; clip-path: circle(71% at 50% 50%) !important;     }
+    &.active2{ clip-path: circle(71% at 50% 50%) !important;     }
   .container{
     display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px;
     .box{
@@ -1181,8 +1194,8 @@ svg{
   }
   .fa-xmark{
     position: fixed;
-    right: 20px;
-    top: 20px;
+    right: 70px;
+    top: 40px;
     background: #888;
     width: 40px;
     height: 40px;
@@ -1278,16 +1291,18 @@ svg{
 }
 .configration{
   position: fixed;
-  height: 500px;
-  top: 20px;
-  right: 0 ;
-  width: 300px;
+  height: fit-content;
+  top: 20%;
+  transform: translateY(-20%);
+  right: 10px ;
+  width: 200px;
   background: url("../assets/wall.png") ;
   z-index: 1000000000000000;
   background-color: var(--second-color);
   transition: .5s;
   clip-path: circle(0% at 50% 50%);
   box-shadow: var(--shadow);
+  padding: 70px 20px 20px;
   &.active{
     clip-path: circle(71% at 50% 50%);
   }
@@ -1295,15 +1310,48 @@ svg{
     position: absolute;
     top: 10px ;
     left: 10px ;
-    width: 40px;
-    height: 40px;
-    background-color: #888;
+    width: 30px;
+    height: 30px;
+    background: var(--grad2);
     display: flex; align-items: center; justify-content: center;
     font-size: 20px;
     color: white;
     transition: .3s;
     cursor: pointer;
     &:hover{opacity: .8;}
+  }
+
+  .mode{
+    background:var(--grad2);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 5px;
+    width: 150px;
+    height: 35px;
+    margin: 0 0 10px;
+    border-radius: 20px;
+    div{
+      flex: 1 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Pacifico';
+      text-transform: capitalize;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+      border-radius: 0 20px 20px 0;
+      &:hover{opacity: .7;}
+      &.ac{
+        background: var(--grad2);
+        border: 1px solid rgba(255, 255, 255, 0.401)  ;
+        color: white;
+        box-shadow: var(--shadow);
+      }
+      &:first-of-type{ border-radius:  20px 0 0 20px ;}
+    }
+
   }
 }
 
@@ -1406,7 +1454,7 @@ h4 {
 
 .bt{
   width: fit-content;
-  background-color: #595858;
+  background:var(--grad1);
   color: white;
   padding: 8px 50px;
   margin: 10px auto 0;
@@ -1414,7 +1462,7 @@ h4 {
   cursor: pointer;
   position: relative;
   transition: .3s;
-  border: 1px solid rgba(255, 255, 255, 0.47);
+  // border: 1px solid rgba(255, 255, 255, 0.47);
   box-shadow: var(--shadow);
   &::after{
     content: "\f135";

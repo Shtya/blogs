@@ -40,6 +40,7 @@ const Home = () => {
         <select className='select2'>
           <option value="1">Latest Posts</option>
           <option value="2"> Oldest Posts</option>
+          <option value="3"> Most Reading</option>
         </select>
         </div>
         </div>

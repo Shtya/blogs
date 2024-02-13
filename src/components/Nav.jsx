@@ -30,13 +30,7 @@ const Nav = () => {
   //   });
   // },[])
 
-  const handleCate = ()=>{
-    let cat = document.querySelector(".category")
-    let i = document.querySelector(".cat i")
-    cat.classList.toggle("active2")
-    i.classList.toggle("rotate")
 
-  }
 
   const handleX = ()=>{
     let nav = document.querySelector("nav")
@@ -65,6 +59,13 @@ const Nav = () => {
   const ShowSettings = ()=>{
     let set = document.querySelector(".configration")
     set.classList.toggle("active")
+  }
+  const handleCate = ()=>{
+    let cat = document.querySelector(".category")
+    let i = document.querySelector(".cat i")
+    cat.classList.toggle("active")
+    i.classList.toggle("rotate")
+
   }
 
 

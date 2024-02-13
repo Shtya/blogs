@@ -6,6 +6,7 @@
   --text-color: #cdb045;
   --gradient: linear-gradient(to bottom, #fedf4e, #65421b);
   --grad1: linear-gradient(to left, #5236a9, #c3183d);
+  --grad2: linear-gradient(to left, #5336a99b, #c3183ddd);
   --shadow: 0 5px 15px rgba(0, 0, 0, 0.142) ;
   --first-color: #ededed ;
   --second-color: #ffffff ;
@@ -565,7 +566,7 @@ nav .social i:nth-child(5) {
   font: inherit;
   width: 200px;
   padding: 10px 10px;
-  background: var(--arrow-icon) no-repeat right 0.8em center/1.4em, linear-gradient(to left, rgb(127, 125, 125) 3em, #fff 3em);
+  background: var(--arrow-icon) no-repeat right 0.8em center/1.4em, linear-gradient(to left, rgba(102, 49, 149, 0.768627451) 3em, #fff 3em);
   color: black;
   border-radius: 20px;
   box-shadow: var(--shadow);
@@ -638,13 +639,18 @@ nav .social i:nth-child(5) {
 }
 .home .boxes-blogs .container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
+}
+@media (max-width: 600px) {
+  .home .boxes-blogs .container {
+    grid-template-columns: 1fr;
+  }
 }
 .home .boxes-blogs .container .box {
   min-height: 500px;
   background-color: var(--second-color);
-  border-radius: 20px;
+  border-radius: 30px 30px 0 0;
   overflow: hidden;
   box-shadow: var(--shadow);
   background: url("../assets/wall.png");
@@ -656,7 +662,6 @@ nav .social i:nth-child(5) {
   height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 20px 20px 10px 10px;
 }
 .home .boxes-blogs .container .box .text {
   padding: 10px;
@@ -678,7 +683,7 @@ nav .social i:nth-child(5) {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 7;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   margin-bottom: 10px;
 }
@@ -720,7 +725,9 @@ nav .social i:nth-child(5) {
   transition: 0.3s;
 }
 .home .boxes-blogs .pagination div.active {
-  background-color: var(--text-color);
+  background: var(--grad2);
+  color: white;
+  font-weight: bold;
 }
 .home .boxes-blogs .pagination div:hover {
   background-color: var(--second-color);
@@ -986,6 +993,12 @@ footer {
   overflow: hidden;
   margin-top: -20px;
 }
+@media (min-width: 1050px) {
+  footer svg {
+    top: -37px;
+    position: relative;
+  }
+}
 footer svg path {
   fill: var(--first-color);
   position: relative;
@@ -1070,6 +1083,9 @@ footer .container ul li:not(li:nth-child(1)) {
 }
 footer .container ul li:not(li:nth-child(1)) i {
   font-size: 30px;
+  background: linear-gradient(to right, #888, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 footer .container ul li:not(li:nth-child(1)) i.mess {
   font-size: 60px;
@@ -1091,8 +1107,9 @@ footer .container ul .group i {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  background-color: var(--text-color);
+  background: var(--grad2);
   padding: 14px;
+  color: white;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -1148,7 +1165,7 @@ footer .container ul.message li::after {
   position: absolute;
   left: 80px;
   top: 50px;
-  background-color: rgba(177, 175, 175, 0.4156862745);
+  background: var(--grad2);
   -webkit-backdrop-filter: blur(1px);
           backdrop-filter: blur(1px);
   height: calc(100% - 100px);
@@ -1179,11 +1196,11 @@ footer .container ul.message li::after {
 }
 .hero .swiper .box .text .p {
   text-transform: capitalize;
-  color: black;
+  color: white;
 }
 
 .Qoutes {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 .Qoutes .swiper-button-next, .Qoutes .swiper-button-prev {
   bottom: 20px;
@@ -1191,7 +1208,7 @@ footer .container ul.message li::after {
   top: unset;
   width: 50px;
   height: 50px;
-  background: var(--blue);
+  background: var(--grad2);
   border-radius: 50%;
   color: white;
 }
@@ -1219,8 +1236,8 @@ footer .container ul.message li::after {
   opacity: 0.8;
 }
 .Qoutes .swiper-pagination-bullet {
-  outline: 3px solid var(--blue);
-  border: 7px solid white;
+  outline: 2px solid #663195;
+  border: 7px solid rgb(195, 21, 21);
   margin-right: 15px !important;
   position: relative;
   bottom: 20px !important;
@@ -1228,8 +1245,8 @@ footer .container ul.message li::after {
 }
 @media (max-width: 700px) {
   .Qoutes .swiper-pagination-bullet {
-    border: 4px solid white;
-    outline: 2px solid var(--blue);
+    border: 4px solid rgb(195, 21, 21);
+    outline: 2px solid #663195;
   }
 }
 .Qoutes .swiper-pagination-bullets {
@@ -1262,7 +1279,7 @@ footer .container ul.message li::after {
   position: absolute;
   left: 25px;
   top: 25px;
-  background-color: rgba(166, 162, 162, 0.2196078431);
+  background: var(--grad2);
   -webkit-backdrop-filter: blur(1px);
           backdrop-filter: blur(1px);
   height: calc(100% - 110px);
@@ -1299,25 +1316,30 @@ footer .container ul.message li::after {
   left: 0;
   width: 100%;
   box-shadow: var(--shadow);
-  padding: 20px 0;
-  transition: 0.3s;
+  padding: 40px 40px;
+  transition: 0.5s;
   display: flex;
   align-items: center;
   background-color: rgba(102, 100, 100, 0.29);
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  z-index: 1000000000000;
-  -webkit-clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
-          clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  z-index: 100000000;
+  -webkit-clip-path: circle(0% at 50% 50%);
+          clip-path: circle(0% at 50% 50%);
   height: 100vh;
   overflow: auto;
   overflow: -webkit-scrollbar;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+.category.active {
+  padding: 20px 0px 20px 300px;
+  -webkit-clip-path: circle(71% at 50% 50%) !important;
+          clip-path: circle(71% at 50% 50%) !important;
+}
 .category.active2 {
-  -webkit-clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%) !important;
-          clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%) !important;
+  -webkit-clip-path: circle(71% at 50% 50%) !important;
+          clip-path: circle(71% at 50% 50%) !important;
 }
 .category .container {
   display: grid;
@@ -1372,8 +1394,8 @@ footer .container ul.message li::after {
 }
 .category .fa-xmark {
   position: fixed;
-  right: 20px;
-  top: 20px;
+  right: 70px;
+  top: 40px;
   background: #888;
   width: 40px;
   height: 40px;
@@ -1484,10 +1506,12 @@ footer .container ul.message li::after {
 
 .configration {
   position: fixed;
-  height: 500px;
-  top: 20px;
-  right: 0;
-  width: 300px;
+  height: -moz-fit-content;
+  height: fit-content;
+  top: 20%;
+  transform: translateY(-20%);
+  right: 10px;
+  width: 200px;
   background: url("../assets/wall.png");
   z-index: 1000000000000000;
   background-color: var(--second-color);
@@ -1495,6 +1519,7 @@ footer .container ul.message li::after {
   -webkit-clip-path: circle(0% at 50% 50%);
           clip-path: circle(0% at 50% 50%);
   box-shadow: var(--shadow);
+  padding: 70px 20px 20px;
 }
 .configration.active {
   -webkit-clip-path: circle(71% at 50% 50%);
@@ -1504,9 +1529,9 @@ footer .container ul.message li::after {
   position: absolute;
   top: 10px;
   left: 10px;
-  width: 40px;
-  height: 40px;
-  background-color: #888;
+  width: 30px;
+  height: 30px;
+  background: var(--grad2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1517,6 +1542,43 @@ footer .container ul.message li::after {
 }
 .configration .fa-xmark:hover {
   opacity: 0.8;
+}
+.configration .mode {
+  background: var(--grad2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  width: 150px;
+  height: 35px;
+  margin: 0 0 10px;
+  border-radius: 20px;
+}
+.configration .mode div {
+  flex: 1 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Pacifico";
+  text-transform: capitalize;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  border-radius: 0 20px 20px 0;
+}
+.configration .mode div:hover {
+  opacity: 0.7;
+}
+.configration .mode div.ac {
+  background: var(--grad2);
+  border: 1px solid rgba(255, 255, 255, 0.401);
+  color: white;
+  box-shadow: var(--shadow);
+}
+.configration .mode div:first-of-type {
+  border-radius: 20px 0 0 20px;
 }
 
 .Skelton {
@@ -1600,7 +1662,7 @@ footer .container ul.message li::after {
 .bt {
   width: -moz-fit-content;
   width: fit-content;
-  background-color: #595858;
+  background: var(--grad1);
   color: white;
   padding: 8px 50px;
   margin: 10px auto 0;
@@ -1608,7 +1670,6 @@ footer .container ul.message li::after {
   cursor: pointer;
   position: relative;
   transition: 0.3s;
-  border: 1px solid rgba(255, 255, 255, 0.47);
   box-shadow: var(--shadow);
 }
 .bt::after {
