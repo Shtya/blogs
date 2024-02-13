@@ -20,7 +20,7 @@ const BlogDetails = () => {
       var content = document.querySelector('.blog-detail');
       var boxPosition = content.offsetTop;
       
-      if (window.pageYOffset >= boxPosition) {
+      if (window.pageYOffset >= boxPosition ) {
         box.classList.add('fixed');
       } else {
         box.classList.remove('fixed');

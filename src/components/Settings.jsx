@@ -8,10 +8,13 @@ const Settings = () => {
   useEffect(_=>{
     
     const Grid = document.querySelectorAll('.grid div');
+    let blogboxes = document.querySelector(".boxes-blogs")
     Grid.forEach(item => {
     item.addEventListener('click', function() {
       Grid.forEach(li => { li.classList.remove('ac'); });
       item.classList.add('ac');
+      if(item.classList.contains("one")) blogboxes.classList.add("list")
+      if(item.classList.contains("two")) blogboxes.classList.remove("list")
       }) });
     
     const Mode = document.querySelectorAll('.mode1 div');
@@ -32,15 +35,10 @@ const Settings = () => {
   return (
     <div className='configration'>
         <i className="fa-solid fa-xmark" onClick={handelSettings}></i>
-        
-        {/* <div className="list">
-          <input type="checkbox" name="" id="grid" />
-          <label htmlFor="grid"> Post list view </label>
-        </div> */}
 
         <div className="mode grid">
-          <div className="light ac"> <i class="fa-solid fa-grip-lines"></i> </div>
-          <div className="dark"> <i class="fa-solid fa-table-cells-large"></i> </div>
+          <div className="one ac"> <i class="fa-solid fa-grip-lines"></i> </div>
+          <div className="two"> <i class="fa-solid fa-table-cells-large"></i> </div>
         </div>
 
         <div className="mode mode1">

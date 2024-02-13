@@ -523,6 +523,56 @@ nav .social i:nth-child(5) {
 }
 .home .boxes-blogs {
   padding: 50px 0;
+  transition: 0.5s ease-in-out;
+}
+.home .boxes-blogs.list {
+  transition: 0.5s ease-in-out;
+}
+.home .boxes-blogs.list .container {
+  grid-template-columns: 1fr;
+  transition: 0.5s ease-in-out;
+}
+.home .boxes-blogs.list .container .box:nth-child(even) {
+  grid-template-columns: 1fr 400px;
+}
+@media (max-width: 800px) {
+  .home .boxes-blogs.list .container .box:nth-child(even) {
+    grid-template-columns: 1fr 250px;
+  }
+}
+@media (max-width: 650px) {
+  .home .boxes-blogs.list .container .box:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+  .home .boxes-blogs.list .container .box:nth-child(even) img {
+    order: -1 !important;
+  }
+}
+.home .boxes-blogs.list .container .box:nth-child(even) img {
+  order: 3;
+}
+.home .boxes-blogs.list .container .box {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 20px;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  align-items: center;
+  border-radius: 20px;
+  transition: 0.5s ease-in-out;
+}
+@media (max-width: 800px) {
+  .home .boxes-blogs.list .container .box {
+    grid-template-columns: 250px 1fr;
+  }
+}
+@media (max-width: 650px) {
+  .home .boxes-blogs.list .container .box {
+    grid-template-columns: 1fr;
+  }
+}
+.home .boxes-blogs.list .container .box .text .h2 {
+  text-align: left;
 }
 .home .boxes-blogs .options {
   --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
@@ -641,6 +691,7 @@ nav .social i:nth-child(5) {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  transition: 0.5s;
 }
 @media (max-width: 600px) {
   .home .boxes-blogs .container {
@@ -656,15 +707,18 @@ nav .social i:nth-child(5) {
   background: url("../assets/wall.png");
   border: 1px solid rgba(136, 136, 136, 0.2980392157);
   outline: 1px solid rgba(136, 136, 136, 0.0470588235);
+  transition: 0.5s;
 }
 .home .boxes-blogs .container .box > img {
   width: 100%;
   height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
+  transition: 0.5s;
 }
 .home .boxes-blogs .container .box .text {
   padding: 10px;
+  transition: 0.5s;
 }
 .home .boxes-blogs .container .box .text .h2 {
   font-size: 20px;
@@ -1200,14 +1254,14 @@ footer .container ul.message li::after {
 }
 
 .Qoutes {
-  margin-top: 5px;
+  margin-top: 20px;
 }
 .Qoutes .swiper-button-next, .Qoutes .swiper-button-prev {
   bottom: 20px;
   right: 30px;
   top: unset;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   background: var(--grad2);
   border-radius: 50%;
   color: white;
@@ -1219,52 +1273,38 @@ footer .container ul.message li::after {
   left: 30px;
 }
 .Qoutes .swiper-button-next::after, .Qoutes .swiper-button-prev::after {
-  font-size: 25px !important;
+  font-size: 15px !important;
   font-weight: bold;
-}
-@media (max-width: 700px) {
-  .Qoutes .swiper-button-next, .Qoutes .swiper-button-prev {
-    width: 30px;
-    height: 30px;
-  }
-  .Qoutes .swiper-button-next::after, .Qoutes .swiper-button-prev::after {
-    font-size: 16px !important;
-  }
 }
 .Qoutes .swiper-button-next:hover, .Qoutes .swiper-button-prev:hover {
   scale: 0.95;
   opacity: 0.8;
-}
-.Qoutes .swiper-pagination-bullet {
-  outline: 2px solid #663195;
-  border: 7px solid rgb(195, 21, 21);
-  margin-right: 15px !important;
-  position: relative;
-  bottom: 20px !important;
-  top: unset;
-}
-@media (max-width: 700px) {
-  .Qoutes .swiper-pagination-bullet {
-    border: 4px solid rgb(195, 21, 21);
-    outline: 2px solid #663195;
-  }
 }
 .Qoutes .swiper-pagination-bullets {
   width: 50% !important;
   left: 50% !important;
   transform: translateX(-50%);
 }
+.Qoutes .swiper-pagination-bullets .swiper-pagination-bullet {
+  outline: 2px solid #663195;
+  border: 6px solid white;
+  margin-right: 15px !important;
+  position: relative;
+  bottom: 20px !important;
+  top: unset;
+}
 .Qoutes .box {
   position: relative;
-  min-height: 600px;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.541);
+  min-height: 300px;
+  margin-bottom: 80px;
+  border: 1px solid rgba(153, 148, 148, 0.541);
+  background-color: var(--second-color);
+  box-shadow: var(--shadow);
 }
 .Qoutes .box .coverImg {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: 180px;
 }
 .Qoutes .box .coverImg img {
   width: 100%;
@@ -1273,41 +1313,34 @@ footer .container ul.message li::after {
      object-fit: cover;
 }
 .Qoutes .box .text {
-  text-align: center;
-  width: calc(100% - 50px);
-  border-radius: 15px 15px 0 0;
-  position: absolute;
-  left: 25px;
-  top: 25px;
-  background: var(--grad2);
-  -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px);
-  height: calc(100% - 110px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px;
+  padding: 10px;
 }
 .Qoutes .box .text .h2 {
-  font-size: 40px;
-  margin-bottom: 20px;
-  text-transform: capitalize;
-  color: var(--text-color);
-  font-family: "Pacifico";
-}
-.Qoutes .box .text .p {
+  font-size: 16px;
+  margin-bottom: 5px;
   text-transform: capitalize;
   color: black;
-  font-size: 20px;
-  color: white;
+  font-family: "DM Sans", Arial;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.Qoutes .box .text .bt {
+  font-size: 15px;
+  padding: 5px 30px;
 }
 .Qoutes .box .text .details {
-  color: rgb(234, 231, 231);
+  color: rgba(0, 0, 0, 0.719);
   margin: 5px 0 20px;
   display: flex;
   align-items: center;
   gap: 10px;
   justify-content: center;
+}
+.Qoutes .box .text .details * {
+  font-size: 14px;
 }
 
 .category {
@@ -1544,7 +1577,7 @@ footer .container ul.message li::after {
   opacity: 0.8;
 }
 .configration .mode {
-  background: var(--grad2);
+  background: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1553,6 +1586,7 @@ footer .container ul.message li::after {
   height: 35px;
   margin: 0 0 10px;
   border-radius: 20px;
+  box-shadow: var(--shadow);
 }
 .configration .mode div {
   flex: 1 1;
@@ -1561,12 +1595,13 @@ footer .container ul.message li::after {
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-family: "Pacifico";
+  font-family: "DM Sans", Arial;
   text-transform: capitalize;
   font-size: 15px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
   border-radius: 0 20px 20px 0;
+  box-shadow: var(--shadow);
 }
 .configration .mode div:hover {
   opacity: 0.7;
