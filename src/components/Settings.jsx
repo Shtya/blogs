@@ -37,8 +37,8 @@ const Settings = () => {
         <i className="fa-solid fa-xmark" onClick={handelSettings}></i>
 
         <div className="mode grid">
-          <div className="one ac"> <i class="fa-solid fa-grip-lines"></i> </div>
-          <div className="two"> <i class="fa-solid fa-table-cells-large"></i> </div>
+          <div className="one "> <i class="fa-solid fa-grip-lines"></i> </div>
+          <div className="two ac"> <i class="fa-solid fa-table-cells-large"></i> </div>
         </div>
 
         <div className="mode mode1">

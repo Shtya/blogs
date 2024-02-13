@@ -1680,7 +1680,7 @@ footer .container ul.message li::after {
 .h2 {
   font-size: 20px;
   font-weight: 500;
-  line-height: 28px;
+  line-height: 1.2;
   text-transform: capitalize;
   cursor: pointer;
   color: white;
