@@ -249,7 +249,7 @@ nav{
     }
     i:nth-child(2){
       left: unset;
-      right: calc(-100vw + 60px );
+      right: calc(-100vw + 55px );
       border-radius: 50% 0 0 50% !important;
       top: -60px;
     }
@@ -435,9 +435,8 @@ nav{
   position: relative;
   .LOGO{
     position: absolute;
-    top: 10px;
-    left: 50%; 
-    transform: translateX(-50%);
+    top: 20px;
+    left: 50px; 
     z-index: 10;
     cursor: pointer;
     @media (max-width:800px) {
@@ -447,7 +446,7 @@ nav{
       }
     }
     img{
-      width: 100%;
+      width: 200px;
       height: 100%;
     }
   }

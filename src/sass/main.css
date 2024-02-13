@@ -279,7 +279,7 @@ nav .settings i:hover {
 }
 nav .settings i:nth-child(2) {
   left: unset;
-  right: calc(-100vw + 60px);
+  right: calc(-100vw + 55px);
   border-radius: 50% 0 0 50% !important;
   top: -60px;
 }
@@ -502,9 +502,8 @@ nav .social i:nth-child(5) {
 }
 .home .LOGO {
   position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 20px;
+  left: 50px;
   z-index: 10;
   cursor: pointer;
 }
@@ -517,7 +516,7 @@ nav .social i:nth-child(5) {
   }
 }
 .home .LOGO img {
-  width: 100%;
+  width: 200px;
   height: 100%;
 }
 .home .boxes-blogs {
