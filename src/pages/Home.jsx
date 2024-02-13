@@ -5,7 +5,19 @@ import Hero from '../components/Hero'
 import Logo from '../assets/Logo1.webp'
 import Qoutes from '../components/Qoutes'
 import { useNavigate } from 'react-router'
+import Img1 from "../assets/services/_ (1).webp" ;
+import Img2 from "../assets/services/_ (2).webp" ;
+import Img3 from "../assets/services/_ (3).webp" ;
+import Img4 from "../assets/services/_ (4).webp" ;
 
+const data = [
+  {img:Img1 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  1" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
+  {img:Img2 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  2" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
+  {img:Img3 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  3" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
+  {img:Img4 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  4" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
+  {img:Img4 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  5" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
+  {img:Img4 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  6" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
+]
 
 const Home = () => {
   const nav = useNavigate() ;
@@ -19,29 +31,34 @@ const Home = () => {
   } ,[next])
 
 
+
   return (
     <div className='home'>
       <div className="LOGO"> <img src={Logo} alt="" /> </div>
       <Hero />
-      <Qoutes />
+      <Qoutes data={data} />
       <div className="boxes-blogs">
         <div className="options">
         <div className="container1">
-        <select className='select1'>
-          <option selected value="0">Select</option>
-          <option value="1">Tips</option>
-          <option value="2">Digital News</option>
-          <option value="3"> Trands</option>
-        </select>
+          <div className="select">
+            <select className='select1'>
+              <option selected value="0">Select</option>
+              <option value="1">Tips</option>
+              <option value="2">Digital News</option>
+              <option value="3"> Trands</option>
+            </select>
+          </div>
         <div className="group">
           <input type="text" placeholder='search' />
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
+        <div className="select">
         <select className='select2'>
           <option value="1">Latest Posts</option>
           <option value="2"> Oldest Posts</option>
           <option value="3"> Most Reading</option>
         </select>
+        </div>
         </div>
         </div>
         <div className="container">
@@ -51,7 +68,7 @@ const Home = () => {
               <div className={`box box-${idx+1}`} onClick={_=> nav("/blog/1")} >
                 <img src={e.thumbnail} alt="" />
                 <div className="text">
-
+                <div className="hash"> #{e.category} </div>
                 <div className="h2"> {e.title} </div>
                 <div className="p" dangerouslySetInnerHTML={{ __html: e?.description }} />
                 <div className="details">
