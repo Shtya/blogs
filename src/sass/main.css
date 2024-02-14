@@ -858,13 +858,12 @@ nav .social i:nth-child(5) {
 }
 .BlogDetails .intro {
   min-height: 100vh;
-  padding: 100px 0 0 0;
+  padding: 300px 0 20px 0;
   position: relative;
-  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  z-index: 1000;
   pointer-events: none;
 }
 .BlogDetails .intro .container {
