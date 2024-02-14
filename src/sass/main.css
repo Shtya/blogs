@@ -1769,6 +1769,9 @@ footer .container ul.message li::after {
   z-index: 100000000;
   -webkit-clip-path: circle(0% at 50% 50%);
           clip-path: circle(0% at 50% 50%);
+  transition-property: -webkit-clip-path;
+  transition-property: clip-path;
+  transition-property: clip-path, -webkit-clip-path;
   height: 100vh;
   overflow: auto;
   overflow: -webkit-scrollbar;
@@ -1779,6 +1782,12 @@ footer .container ul.message li::after {
   padding: 20px 0px 20px 300px;
   -webkit-clip-path: circle(71% at 50% 50%) !important;
           clip-path: circle(71% at 50% 50%) !important;
+}
+@media (max-width: 800px) {
+  .category.active {
+    padding: 10px;
+    z-index: 100000000000000;
+  }
 }
 .category.active2 {
   -webkit-clip-path: circle(71% at 50% 50%) !important;
@@ -1851,6 +1860,12 @@ footer .container ul.message li::after {
   border: 1px solid #777;
   cursor: pointer;
   transition: 0.3s;
+}
+@media (max-width: 800px) {
+  .category .fa-xmark {
+    top: 10px !important;
+    right: 20px !important;
+  }
 }
 .category .fa-xmark:hover {
   opacity: 0.8;

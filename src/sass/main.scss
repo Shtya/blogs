@@ -1560,12 +1560,19 @@ h2{
     backdrop-filter: blur(5px);
     z-index: 100000000;
     clip-path: circle(0% at 50% 50%);
+    transition-property: clip-path;
     height: 100vh;
     overflow: auto;
     overflow: -webkit-scrollbar;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    &.active{ padding: 20px 0px 20px 300px; clip-path: circle(71% at 50% 50%) !important;     }
+    &.active{ 
+      padding: 20px 0px 20px 300px; clip-path: circle(71% at 50% 50%) !important;     
+      @media (max-width:800px) {
+        padding: 10px;
+        z-index: 100000000000000;
+      }
+    }
     &.active2{ clip-path: circle(71% at 50% 50%) !important;     }
   .container{
     display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px;
@@ -1628,7 +1635,12 @@ h2{
     color: white;
     border: 1px solid #777;
     cursor: pointer;
-    transition: .3s;
+    transition: .3s ;
+    
+    @media (max-width:800px) {
+      top: 10px !important;
+      right: 20px !important;
+    }
     &:hover{
       opacity: .8;
     }
