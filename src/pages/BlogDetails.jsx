@@ -2,16 +2,12 @@ import React, { useEffect, useState } from 'react'
 import Nav2 from '../components/Nav2'
 import Cover from "../assets/blogs/intro.jpg"
 import axios from 'axios'
-import Divider from '../components/Divider'
 import Qoutes from '../components/Qoutes'
 
-import Img1 from "../assets/services/_ (1).webp" ;
-import Img2 from "../assets/services/_ (2).webp" ;
-import Img3 from "../assets/services/_ (3).webp" ;
-import Img4 from "../assets/services/_ (4).webp" ;
 import { useNavigate } from 'react-router'
-import user1 from "../assets/user.gif"
 import user2 from "../assets/user2.png"
+import Footer from '../components/Footer'
+import Hero2 from '../components/Hero2'
 const BlogDetails = () => {
   const [data , setdata] = useState([])
   const [related , setrelated] = useState([])
@@ -22,24 +18,31 @@ const BlogDetails = () => {
       })
   } ,[])
 
-  useEffect(_=>{
-    window.onscroll = function() {
-      var box = document.getElementById('related');
-      var content = document.getElementById('blog-detail');
-      var boxPosition = content.offsetTop;
-      
-      if (window.pageYOffset >= boxPosition ) {
+  useEffect(() => {
+    const handleScroll = () => {
+      const box = document.getElementById('related');
+      const content = document.querySelector('.blog-detail');
+
+      if (window.scrollY >= content.offsetTop) {
         box.classList.add('fixed');
       } else {
         box.classList.remove('fixed');
       }
     };
-  } ,[])
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const nav = useNavigate()
 
   return (
     <div className='BlogDetails'>
       <Nav2 />
+
       <div className="intro">
         <div className="container">
         <div className="ImgCover"> <img src={Cover} alt="" /> </div>
@@ -52,9 +55,38 @@ const BlogDetails = () => {
       </div>
 
       
-      <div className="blog-detail" id='blog-detail'>
+      <div className="blog-detail">
         <div className="container">
-          <div dangerouslySetInnerHTML={{ __html: data?.description }} />
+          <div className="box">
+            <div dangerouslySetInnerHTML={{ __html: data?.description }} />
+
+            <div className="reaction">
+            {
+              Array(3).fill(1).map((e,index)=>(
+                <div className="comments">
+              <img src={user2} alt="" />
+              <div className="text">
+                <div className="name"> Nathasya Putri</div>
+                <div className="date">DECEMBER 23, 2019 AT 11:55 AM</div>
+                <div className="p"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, aut voluptates maxime ad tenetur quibusdam dolorum veritatis laboriosam. Rem, esse. </div>
+              </div>
+              <div className="replay">
+              <i class="fa-solid fa-reply-all"></i> reply
+              </div>
+            </div>
+              ))
+            }
+
+            <div className="addcomment">
+            <img src={user2} alt="" />
+              <div className="add">
+              <input type="text" placeholder='Enter Comment' />
+              <div className='bt'> Publish</div>
+              </div>
+            </div>
+            </div>
+          </div>
+
           <div className="related" id='related'>
             {
               related.slice(0 , 4).map((ele,index)=>(
@@ -73,40 +105,12 @@ const BlogDetails = () => {
               ))
             }
           </div>
-          
-        </div>
-
-          <div className="container">
-        <div className="reaction">
-          {
-            Array(3).fill(1).map((e,index)=>(
-              <div className="comments">
-            <img src={user2} alt="" />
-            <div className="text">
-              <div className="name"> Nathasya Putri</div>
-              <div className="date">DECEMBER 23, 2019 AT 11:55 AM</div>
-              <div className="p"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, aut voluptates maxime ad tenetur quibusdam dolorum veritatis laboriosam. Rem, esse. </div>
-            </div>
-            <div className="replay">
-            <i class="fa-solid fa-reply-all"></i> reply
-            </div>
-          </div>
-            ))
-          }
-
-          <div className="addcomment">
-          <img src={user2} alt="" />
-            <div className="add">
-            <input type="text" placeholder='Enter Comment' />
-            <div className='bt'> Publish</div>
-            </div>
-          </div>
-          </div>
 
         </div>
       </div>
 
       <Qoutes data={related} classn="custom" />
+      <Footer bg={true} />
 
     </div>
   )

@@ -10,10 +10,10 @@ import 'swiper/css/effect-cube';
 import 'swiper/css/effect-creative';
 
 
-import Img1 from "../assets/portfolio/img1.jpg" ;
-import Img2 from "../assets/portfolio/img2.jpg" ;
-import Img3 from "../assets/portfolio/img3.jpg" ;
-import Img4 from "../assets/portfolio/img4.jpg" ;
+import Img1 from "../assets/portfolio/bg1.jpg" ;
+import Img2 from "../assets/portfolio/bg2.jpg" ;
+import Img3 from "../assets/portfolio/bg3.jpg" ;
+import Img4 from "../assets/portfolio/bg4.jpg" ;
 import { useNavigate } from 'react-router';
 
 const settings = {

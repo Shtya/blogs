@@ -1,4 +1,4 @@
-import React  from 'react'
+import React, { useEffect, useState }  from 'react'
 import {Routes , Route, useLocation} from "react-router-dom"
 
 import Home from "./pages/Home.jsx"
@@ -15,6 +15,7 @@ export const Social_Media = ["https://www.facebook.com/MRMadvertisingDubai" , "h
 
 const App = () => {
 
+
   return ( 
     <div className='App'>
       <Nav />
@@ -30,7 +31,6 @@ const App = () => {
         <Route  path='/category/:id'    element={<CategoryPage />} />                                                 
       </Routes>
 
-      <Footer />
       </div>
     </div>
 

@@ -1,11 +1,12 @@
 import React from 'react'
 import Logo from "../assets/Logo1.webp"
-const Footer = () => {
+import wall from "../assets/wall.png"
+const Footer = ({bg}) => {
   return (
     <footer id='footer'>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-  <path fill="#0099ff" fill-opacity="1" d="M0,32L60,58.7C120,85,240,139,360,133.3C480,128,600,64,720,53.3C840,43,960,85,1080,101.3C1200,117,1320,107,1380,101.3L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
-</svg>
+    <div class="mainContainer">
+      <div class="wave top " style={bg == true ? {backgroundImage:`url(${wall})`} : {}} ></div>
+    </div>
     <div className='container'>
       <ul>
         <li> Useful links </li>

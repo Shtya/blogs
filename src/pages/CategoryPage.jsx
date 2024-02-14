@@ -9,6 +9,7 @@ import Img1 from "../assets/services/_ (1).webp" ;
 import Img2 from "../assets/services/_ (2).webp" ;
 import Img3 from "../assets/services/_ (3).webp" ;
 import Img4 from "../assets/services/_ (4).webp" ;
+import Hero2 from '../components/Hero2'
 
 const data = [
   {img:Img1 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  1" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
@@ -35,7 +36,7 @@ const CategoryPage = () => {
   return (
     <div className='home'>
       <div className="LOGO"> <img src={Logo} alt="" /> </div>
-      <Hero />
+      <Hero2 />
       <Qoutes data={data} />
       <div className="boxes-blogs">
         <div className="options">

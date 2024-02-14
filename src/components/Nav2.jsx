@@ -20,14 +20,13 @@ const Nav2 = () => {
 
   const [top , settop] = useState(false)
   useEffect(_=>{
-    const handelScroll =  _=> window.scrollY > 100 ? settop("show-up") : settop("")
+    const handelScroll =  _=> window.scrollY > 300 ? settop("show-up") : settop("")
     window.addEventListener("scroll" , handelScroll)
     return _=> window.removeEventListener("scroll" , handelScroll)
   } ,[ window])
 
   let prevScrollPos  = window.pageYOffset;
   let navbar   = document.getElementById('navbar');
-
 
   window.onscroll = function() {
     let currentScrollPos = window.pageYOffset;
@@ -62,15 +61,14 @@ const Nav2 = () => {
         <ul>
           <li onClick={_=> nav("/")} >home</li>
           <li onClick={_=> nav("/work")} >Work</li>
-          <li onClick={handleCate} className='cat' > Category <i className="fa-solid fa-angle-up"></i> </li>
+          <li onClick={handleCate} className='cat' > Category <ion-icon name="chevron-up-outline"></ion-icon> </li>
           <li onClick={handleContact} >contact us</li>
           <li onClick={_=> nav("/about-us")} >about us</li>
+          <ion-icon name="search-outline"></ion-icon>
         </ul>
-        <i class="fa-solid fa-magnifying-glass"> </i>
       </div>
 
-      <div className="clip1">  </div>
-      <div className="clip2">  </div>
+      <div className="mainContainer"> <div class="wave top" /> </div>
 
     </div>
   )

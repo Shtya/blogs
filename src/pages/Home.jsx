@@ -9,6 +9,7 @@ import Img1 from "../assets/services/_ (1).webp" ;
 import Img2 from "../assets/services/_ (2).webp" ;
 import Img3 from "../assets/services/_ (3).webp" ;
 import Img4 from "../assets/services/_ (4).webp" ;
+import Footer from '../components/Footer'
 
 const data = [
   {img:Img1 , title:"Areda Slide Lorem ipsum dolor sit amet Areda Slide Lorem ipsum dolor sit amet  1" , desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, fugiat in? Similique cupiditate dolor sunt laborum consectetur nostrum a itaque?"},
@@ -68,7 +69,7 @@ const Home = () => {
               <div className={`box box-${idx+1}`} onClick={_=> nav("/blog/1")} >
                 <img src={e.thumbnail} alt="" />
                 <div className="text">
-                <div className="hash"> #{e.category} </div>
+                <div className="hash"> {e.category} </div>
                 <div className="h2"> {e.title} </div>
                 <div className="p" dangerouslySetInnerHTML={{ __html: e?.description }} />
                 <div className="details">
@@ -90,6 +91,9 @@ const Home = () => {
 
         </div>
       </div>
+
+      <Footer bg={true} />
+
     </div>
   )
 }
