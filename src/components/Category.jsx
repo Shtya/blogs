@@ -6,20 +6,17 @@ import Img4 from "../assets/portfolio/img4.jpg"
 import { useNavigate } from 'react-router'
 
 const data = [
-    {img:Img1 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img2 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img1 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img2 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img3 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img4 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img3 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img4 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img3 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img4 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img3 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img4 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img3 , title:"Lorem ipsum dolor" , desc:"21"},
-    {img:Img4 , title:"Lorem ipsum dolor" , desc:"21"},
+    {img:Img1 , title:"Lorem ipsum " , desc:"21"},
+    {img:Img2 , title:"Lorem ipsum " , desc:"21"},
+    {img:Img1 , title:"Lorem ipsum " , desc:"21"},
+    {img:Img2 , title:"Lorem ipsum " , desc:"21"},
+    {img:Img3 , title:"Lorem ipsum " , desc:"21"},
+    {img:Img4 , title:"Lorem ipsum " , desc:"21"},
+    {img:Img3 , title:"Lorem ipsum " , desc:"21"},
+    {img:Img4 , title:"Lorem ipsum " , desc:"21"},
+    {img:Img3 , title:"Lorem ipsum " , desc:"21"},
+    {img:Img4 , title:"Lorem ipsum " , desc:"21"},
+    {img:Img3 , title:"Lorem ipsum " , desc:"21"},
   ]
 
 const Category = () => {

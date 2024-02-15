@@ -92,8 +92,6 @@ const Home = () => {
         </div>
       </div>
 
-      <Footer bg={true} />
-
     </div>
   )
 }

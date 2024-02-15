@@ -3,34 +3,7 @@ import Logo from "../assets/Logo.webp" ;
 import { useNavigate } from 'react-router';
 
 const Nav = () => {
-  const nav = useNavigate()
-  // useEffect(_=>{
-  //   window.addEventListener('resize', function() {
-  //     let nav = document.querySelector("nav")
-  //     let x = document.querySelector(".menu")
-  //     let cat = document.querySelector(".category")
-  //     let i = document.querySelector(".cat i")
-  //     // if (window.innerWidth <= 850) {
-  //     //   nav.style.left = "0"
-  //     //   x.classList.remove("fa-bars")
-  //     //   x.classList.add("fa-xmark")
-  //     //   if(cat.classList.contains("active")) cat.classList.remove("active") 
-  //     // }
-  //       // nav.style.left = "-300px"
-  //       // x.classList.add("fa-bars")
-  //       // x.classList.remove("fa-xmark")
-  //       // if(cat.classList.contains("active")) cat.classList.remove("active") 
-  //     // }
-  //   // else{
-  //     //   // nav.style.left = "0"
-  //     //   x.classList.remove("fa-bars")
-  //     //   x.classList.add("fa-xmark")
-  //     //   if(cat.classList.contains("active")) cat.classList.remove("active") 
-  //     // }
-  //   });
-  // },[])
-
-
+  const nav1 = useNavigate()
 
   const handleX = ()=>{
     let nav = document.querySelector("nav")
@@ -68,6 +41,11 @@ const Nav = () => {
 
   }
 
+  const nav = (path)=>{
+    nav1(path)
+    handleX() ;
+  }
+
 
   return (
     <nav>
@@ -85,7 +63,7 @@ const Nav = () => {
         <li onClick={_=> nav("/")}>home</li>
         <li onClick={_=> nav("/work")} >Work</li>
         <li className='cat' onClick={handleCate}> Category <i className="fa-solid fa-angle-up"></i> </li>
-        <li onClick={handleContact}>contact us</li>
+        <li onClick={_=> nav("/contact-us")}>contact us</li>
         <li onClick={_=> nav("/about-us")}>about us</li>
 
       </ul>

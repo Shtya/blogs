@@ -83,6 +83,12 @@ const BlogDetails = () => {
               <input type="text" placeholder='Enter Comment' />
               <div className='bt'> Publish</div>
               </div>
+              <div className="share">
+              <ion-icon name="share-social-outline"></ion-icon>
+              <ion-icon name="logo-twitter"></ion-icon>
+              <ion-icon name="logo-instagram"></ion-icon>
+              <ion-icon name="logo-facebook"></ion-icon>
+              </div>
             </div>
             </div>
           </div>
@@ -110,7 +116,6 @@ const BlogDetails = () => {
       </div>
 
       <Qoutes data={related} classn="custom" />
-      <Footer bg={true} />
 
     </div>
   )

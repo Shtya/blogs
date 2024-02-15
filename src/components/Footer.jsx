@@ -1,7 +1,23 @@
 import React from 'react'
 import Logo from "../assets/Logo1.webp"
 import wall from "../assets/wall.png"
+import { useNavigate } from 'react-router'
 const Footer = ({bg}) => {
+  const nav = useNavigate()
+
+  const handleContact = ()=>{
+    let contact = document.querySelector(".contact-us")
+    contact.classList.toggle("show")
+  }
+
+  const handleCate = ()=>{
+    let cat = document.querySelector(".category")
+    let i = document.querySelector(".cat i")
+    cat.classList.toggle("active2")
+    i.classList.toggle("rotate")
+
+  }
+
   return (
     <footer id='footer'>
     <div class="mainContainer">
@@ -10,10 +26,10 @@ const Footer = ({bg}) => {
     <div className='container'>
       <ul>
         <li> Useful links </li>
-        <li> Home </li>
-        <li> blogs </li>
-        <li> about us </li>
-        <li> contact us </li>
+        <li onClick={_=> nav("/")} > Home </li>
+        <li onClick={handleCate}> category </li>
+        <li onClick={_=> nav("/about-us")} > about us </li>
+        <li onClick={handleContact } > contact us </li>
       </ul>
       <ul className='ul-1' >
           <li > Contact Info </li>

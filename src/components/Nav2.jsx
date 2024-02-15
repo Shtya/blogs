@@ -20,16 +20,16 @@ const Nav2 = () => {
 
   const [top , settop] = useState(false)
   useEffect(_=>{
-    const handelScroll =  _=> window.scrollY > 300 ? settop("show-up") : settop("")
+    const handelScroll =  _=> window.scrollY > 900 ? settop("show-up") : settop("")
     window.addEventListener("scroll" , handelScroll)
     return _=> window.removeEventListener("scroll" , handelScroll)
   } ,[ window])
 
-  let prevScrollPos  = window.pageYOffset;
+  let prevScrollPos  = window.scrollY;
   let navbar   = document.getElementById('navbar');
 
   window.onscroll = function() {
-    let currentScrollPos = window.pageYOffset;
+    let currentScrollPos = window.scrollY;
 
     if(navbar){
 

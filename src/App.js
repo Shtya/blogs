@@ -10,6 +10,9 @@ import Contactus from './components/Contactus.jsx'
 import Settings from './components/Settings.jsx'
 import BlogDetails from './pages/BlogDetails.jsx'
 import UP from "./components/UP.jsx"
+import About_us from './pages/About-us.jsx'
+import Error from './pages/Error.jsx'
+import ContactusPage from './pages/Contactus.jsx'
 export const Social_Media = ["https://www.facebook.com/MRMadvertisingDubai" , "https://www.instagram.com/mrmadvertising/" , "https://www.linkedin.com/company/mrm-advertising-media" , "https://api.whatsapp.com/send?phone=+971561384496&text=Hello%2C%20world!"]
 
 
@@ -37,7 +40,12 @@ const App = () => {
         <Route  path='/'    element={<Home />} />                                                 
         <Route  path='/blog/:id'    element={<BlogDetails />} />                                                 
         <Route  path='/category/:id'    element={<CategoryPage />} />                                                 
+        <Route  path='/about-us'    element={<About_us />} />                                                 
+        <Route  path='/contact-us'    element={<ContactusPage />} />                                                 
+        <Route  path='*'    element={<Error />} />                                                 
       </Routes>
+
+      <Footer bg={true} />
 
       </div>
     </div>

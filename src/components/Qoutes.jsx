@@ -42,7 +42,7 @@ const Qoutes = ({data , classn}) => {
   return (
     <div className={`Qoutes ${classn}`}>
         <Swiper  {...settings} className='swiper container '   >
-            {data.slice(0 , 6).map((ele,idx)=>( 
+            {data.slice(0 , 5).map((ele,idx)=>( 
                 <SwiperSlide key={idx} className='box' >  
                     <div className="coverImg"> <img src={ele.thumbnail || ele.img} alt="" /></div>
                     <div className="text">
